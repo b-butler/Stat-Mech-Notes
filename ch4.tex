@@ -1,0 +1,181 @@
+When we wish to decouple a system into non-interacting parts, different
+statistics apply based on the underlying physics of the system. Three major
+types of statistics exist with respect to molecular systems: Boltzmann,
+Fermi-Dirac, and Bose-Einstein. To be exact Boltzmann statistics is the limit of
+the other two at sufficiently high T.
+
+\begin{itemize}
+	\item Fermi-Dirac
+		\begin{itemize}
+			\item Occurs when the exchange of basis particles is antisymmetric
+				with respect to the wave function.
+			\item Example fermions are electrons which the extrapolation of the
+				Fermi-Dirac statistics is the Pauli exclusion principle.
+		\end{itemize}
+	\item Bose-Einstein
+		\begin{itemize}
+			\item For systems where the exchange of basis particles is symmetric
+				with respect to the wave function, Bose-Einstein statistics
+				apply.
+			\item Examples are protons and neutrons.
+		\end{itemize}
+	\item Boltzmann
+		\begin{itemize}
+			\item The high temperature limit of the other two.
+			\item Ends up being the classical approximation of the quantum
+				mechanical equations.
+		\end{itemize}
+\end{itemize}
+
+\section{Boltzmann Statistics}\label{sec:Boltzmann Statistics}
+\subsection{Hamiltonian Decoupling}
+If a multiparticle system is dilute enough the interactions between particles is
+negligible, and the system can be treated as a $N$ independent body problem.
+Even in liquids and solids convenient ``basis particles'' can be chosen so the
+system is modeled by a $N$ independent body system. In these cases where
+interactions can be ignored, the Hamiltonian can be decoupled.
+\begin{equation*}
+	\mathcal{H} = \sum_{i=1}^{N}{\mathcal{H}_i}
+\end{equation*}
+In addition, for individual molecules if the individual modes of molecular
+energy are decoupled,
+\begin{equation*}
+	\mathcal{H}_i = \sum_{m \in M}{\mathcal{H}_i^{m}},
+\end{equation*}
+where $M$ is the set of all decoupled energy modes.
+\subsection{Partition Function Decoupling}
+We now consider a $N$ distinguishable, independent, body system. Then,
+\begin{align*}
+	\mathcal{Q}(N,V,T) &= \sum_j{e^{-\beta E_j}} = \sum_{j,k,\dots}{e^{-\beta
+	\cdot (\epsilon_j^a + \epsilon_k^b + \epsilon_l^c + \dots}} \\
+					   &= q_a q_b q_c \dots
+\end{align*}
+Here we see the canonical partition function becomes $N$ individual particle
+partition functions. Since the particles are identical, we have
+\begin{align*}
+	q(V, T) &= \sum_j{e^{-\beta \epsilon_j}}\\
+	\mathcal{Q} &= q^{N}. 
+\end{align*}
+This equation is only true in a distinguishable system though which in molecular
+systems in rarely the case. Including distinguishably leads to some problems.
+Consider, two equivalent energy states,
+\begin{align*}
+	E_{tot} &= \epsilon_i^a + \epsilon_j^b + \epsilon_j^c + \dots \\
+	E_{tot} &= \epsilon_j^a + \epsilon_i^b + \epsilon_j^c + \dots\quad .
+\end{align*}
+In fact, there are $N$ such equivalent arrangements. However, in the case that
+all individual energies are different, there are $N!$ combinations. The problem,
+thus, is that different energy combinations have differing numbers of equivalent
+arrangements. This would imply that a simple divisor cannot be applied to reduce
+the number of configurations of a distinguishable system to a indistinguishable
+one.
+
+Despite this fact, we can still often make the approximation of dividing the
+distinguishable partition function by $N!$. At room temperature ($m=10^{-22}g$,
+$a=10\text{cm}$), the number of energy states available to a particle in a box
+is $O(10^{30})$. This number signifies that in all but extremely dense systems
+at around room temperature or even colder is much greater than the number of
+particles, so it is unlikely that any two particles adopt the same energy, so
+\begin{equation*}
+	\mathcal{Q} = \frac{q^{N}}{N!},
+\end{equation*}
+is an excellent approximation for all but `the lightest molecules at very low
+temperatures.'
+\subsection{Getting Molecular Properties}
+Since we now are dealing with individual molecular partition functions, we can
+get averages of molecular properties. The probability of being in state $j$ is
+\begin{equation*}
+	\pi_j = \frac{e^{-\beta \epsilon_j}}{q}.
+\end{equation*}
+Any mechanical properties is then,
+\begin{equation*}
+	\bar{M} = \sum_j{M_j \pi_j}.
+\end{equation*}
+The parallelism to the ensembles already mentioned is not an accident as
+Boltzmann's original examination of statistical mechanics used a system of
+molecules in thermal equilibrium as his start. In fact, we could from \textit{a
+priori} principles derive the previous two equations.
+
+\section{Fermi-Dirac and Bose-Einstein Statistics}%
+\label{sec:Fermi-Dirac and Bose-Einstein Statistics}
+\subsection{Common Derivation}
+Derivation of the exact distribution of states in an independent system obeying
+either Fermi-Dirac or Bose-Einstein statistics is most readily done in the grand
+canonical ensemble. We let $E_j(N, V)$ be the energy available to a $N$ body
+system, $\epsilon_k$ the molecular quantum states, and $n_k$ the occupancy
+number of a molecular quantum state. Thus it follows,
+\begin{align*}
+	E_j &= \sum_k{\epsilon_k n_k}\\
+	N &= \sum_k{n_k}.
+\end{align*}
+
+From here, we take the $\Xi$ and find its form on a molecular basis.
+\begin{equation*}
+	\Xi = \sum_N{\lambda^{N}} \sum_j{e^{-\beta E_j}} =
+	\sum_N{\lambda^{N}}\sum_{n_k \in S}{e^{-\beta \cdot \sum_i{\epsilon_i n_i}}},
+\end{equation*}
+where $S$ is the set of all occupancies numbers that obeys $\sum_k{n_k} = N$.
+Some more manipulation leads to,
+\begin{align*}
+	\Xi &= \sum_{N=0}^{\infty} \sum_{n_k \in S}{\lambda^{\sum_i{n_i}} e^{-\beta
+	\cdot \sum_i{\epsilon_i n_i}}}\\
+		&= \sum_{N=0}^{\infty} \sum_{n_k \in S} \prod_k{(\lambda e^{-\beta
+		\epsilon_k})^{n_k}}.
+\end{align*}
+We have moved $\lambda$ into the second summation which just distributes
+$\lambda^{N}$ to each term. We then isolated $n_k$ by using a series product.
+From here, we must notice that since $N \to \infty$, every distribution of $n_k
+\in \mathbb{N}$ compatible with the occupancy number requirements of the given
+statistics will be summed over. Thus each $n_k$ will vary over all its possible values in
+combination with every other occupancy number. The knowledge allows us to write
+the previous equation as,
+\begin{align*}
+	\Xi &= \sum_{n_1}^{\max(n_1)} \sum_{n_2}^{\max(n_2)} \sum_{n_3}^{\max(n_3)}
+	\cdots \prod_k{(\lambda e^{-\beta \epsilon_k})^{n_k}}\\
+	\text{or}\\
+	\Xi &= \sum_{n_1}^{\max(n_1)}{(\lambda e^{-\beta \epsilon_1})^{n_1}}
+	\sum_{n_2}^{\max(n_2)}{(\lambda e^{-\beta \epsilon_2})^{n_2}}\cdots\quad.
+\end{align*}
+This is simple the product of $N$ terms so we have,
+\begin{equation*}
+	\Xi = \prod_k \sum_{n_k}^{\max(n_k)}{(\lambda e^{-\beta \epsilon_k})^{n_k}}
+\end{equation*}
+
+\subsection{Fermi-Dirac}
+For Fermi-Dirac statistics each state is either uniquely occupied or not
+occupied at all. Therefore, the summation above expands to two terms for
+occupied and unoccupied states.
+\begin{equation*}
+	\Xi = \prod_k (1 + \lambda e^{-\beta \epsilon_k}).
+\end{equation*}
+\subsection{Bose-Einstein}
+In the case of Bose-Einstein statistics each state can be occupied any number of
+times without restriction. This becomes,
+\begin{align*}
+	\Xi &= \prod_k \sum_{n_k}^{\infty}{(\lambda e^{-\beta \epsilon_k})^{n_k}}\\
+		&= \prod_k \sum_{i_k}^{\infty}{x^{i_k}}\\
+		&= \prod_k (1 + x)^{-1} \quad \text{for } x < 1\\
+		&= \prod_k (1 + \lambda e^{-\beta \epsilon_k})^{-1}
+\end{align*}
+The last two lines uses the result from the geometric series. One way to write
+this result is,
+\begin{equation*}
+	\Xi_{BE}^{FD} = \prod_k{(1 + \lambda e^{-\beta \epsilon_k})^{\pm 1}}.
+\end{equation*}
+From here we note that,
+\begin{equation*}
+	\ln\Xi = \sum_k{\ln{(1 \pm \lambda e^{-\beta \epsilon_k})}}.
+\end{equation*}
+Thus $\bar{E}$ can be calculated by first noting,
+\begin{align*}
+	\bar{n}_k &= \frac{\lambda e^{-\beta \epsilon_k}}{1 \pm \lambda e^{-\beta
+	\epsilon_k}}\\
+	\text{then,}\\
+	\bar{E} &= \sum_k{\bar{n}_k \epsilon_k} = \sum_k{\frac{\epsilon_k
+		\lambda e^{-\beta \epsilon_k}}{1 \pm \lambda e^{-\beta
+		\epsilon_k}}}.
+\end{align*}
+
+By allowing $T \to \infty$ or $\frac{N}{V} \to 0$, $\lambda \to 0$ which means
+$\bar{n}_k \to 0$. This can be shown to make both Fermi-Dirac and Bose-Einstein
+statistics go to the Boltzmann limit.

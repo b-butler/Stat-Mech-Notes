@@ -1,0 +1,175 @@
+\section{The Monotonic Ideal Gas}%
+\label{sec:MIG}
+This chapter will concern gases that are sufficiently dilute as to have
+negligible interactions with other particles. In addition, these molecules will
+be monotonic i.e.\ only consist of one atom. Therefore, no rotational or
+vibrational energy will be taken into consideration. Furthermore, we will assume
+that the partition function of a molecule can be decoupled into its individual
+energy modes.
+
+Assumptions
+\begin{itemize}
+	\item Gas is dilute enough to neglect individual particle interactions.
+	\item Individual energy modes in the atom are decoupled.
+\end{itemize}
+\section{The Individual Molecular Partition Functions}%
+\label{sec:IMPF}
+First we must assess the different modes of energy that a molecule can carry.
+Since there are no interactions, there is no potential energy in the system
+unless a body force were to be acting on the entire system. The only available
+modes for storing energy into the system are then,
+\begin{enumerate}
+	\item Translational
+	\item Electronic
+	\item Nuclear.
+\end{enumerate}
+The partition functions are then,
+\begin{align*}
+	q_{mol} &= q_{trans}q_{elec}q_{nucl}\\
+	\mathcal{Q} &= \frac{q_{mol}^N}{N!}\\
+	\mathcal{Q} &= \frac{(q_{trans}q_{elec}q_{nucl})^N}{N!}.
+\end{align*}
+
+\subsection{Translational Partition Functions}
+We begin with the exploration of the translational partition function. From one
+of the first problems solved in quantum mechanics, the particle in an infinite
+potential box, we know,
+\begin{equation*}
+	\epsilon_{n_x,n_y,n_z} = \frac{h^{2}}{8ma^{2}}(n_x^2 + n_y^2 + n_z^2).
+\end{equation*}
+From here we can directly plug in $\epsilon$ into $q_{trans}$.
+\begin{align*}
+	q_{trans} &= \sum_{j,k,l}{e^{-\beta (\epsilon_{n_x} + \epsilon_{n_y} +
+	\epsilon_{n_z})}}\\
+			  &= \sum_i{e^{-\beta \epsilon_{n_i}}} \sum_j{e^{-\beta
+			  \epsilon_{n_j}}} \sum_l{e^{-\beta \epsilon_{n_l}}}\\
+			  &= \left( \sum_{i=0}^{\infty}{e^{-\beta
+			  \epsilon_{n_l}}}\right)^3\\
+			  &= \left( \sum_{i=0}^{\infty}{\text{exp}\left(-\frac{\beta h^2
+			  n^{2}}{8 m a^{2}}\right)}\right)^3
+\end{align*}
+\emph{This summation cannot be expressed exactly analytically.} However, the
+density of available states is so large, that the available energy level can be
+treated as continuous which means the summation can be approximated by an
+integral. The difference between two energy levels is given by,
+\begin{equation*}
+	\Delta = \frac{\beta h^2 (n_x + 1)^2}{8ma^{2}} - \frac{\beta h^2
+	n_x^{2}}{8ma^{2}} = \frac{\beta h^2 (2n_x + 1)}{8ma^{2}}.
+\end{equation*}
+At $T=300K$, $m=10^{-22}$, and $a=10cm$, $\Delta$ is on the order of $(2n_x + 1)
+\cdot 10^{-20}$. For these conditions $n_x \approx 10^{10}$. As one can see then
+the approximation is a very good one.
+
+Thus, $q_{trans}$ becomes,
+\begin{equation*}
+	\left(\int_0^{\infty}{e^{-\beta h^2 n^2 / 8ma^{2}}\text{d}n}\right)^3 =
+	\left(\frac{2\pi mkT}{h^{2}}\right)^{3/2} V.
+\end{equation*}
+$V$ represents the volume or $a^{3}$. This result follows that the integrand and
+lower limit of the integral forms the error function. Another way to come to
+this result is to use the density of states approximation where the density of
+transitional energy levels is,
+\begin{equation*}
+	\omega(\epsilon)\text{d}\epsilon = \frac{\pi}{4}
+	\left(\frac{8ma^{2}}{h^{2}}\right)^{3/2} \epsilon^{1/2}\text{d}\epsilon.
+\end{equation*}
+Some observations are worth noting. First that the average momentum $p$ is
+$(mkT)^{1/2}$. This comes from equating the translational energy stated above
+using an ensemble average and the momentum form of translational energy. From
+here, we can see that $q_{trans}$ is,
+\begin{equation*}
+	\frac{V}{(h/p)^3} = \frac{V}{\Lambda^{3}}.
+\end{equation*}
+$\Lambda$ is simple the DeBroglie wavelength.
+
+\subsection{Electronic Partition Functions}
+For the electronic energy we use energy levels so that,
+\begin{equation*}
+	q_{elec} = \sum_i{\omega_i e^{-\beta \epsilon_i}}.
+\end{equation*}
+We then fix the ground state energy to zero which gives us,
+\begin{equation*}
+	q_{elec} = \omega_1 + \sum_{i=2}{\omega_i e^{-\beta \Delta\epsilon_{1i}}}.
+\end{equation*}
+The argument in the exponential is usually large since the energy difference is
+on the order of electron volts. Specific cases like the halogen series require
+more than just the first term, however. Regardless, the sum converges quickly
+and energy levels of available states for many atoms and materials have been
+tabulated. The following is usually enough,
+\begin{equation*}
+	q_{elec} = \omega_1 + \omega_2 e^{-\beta \Delta\epsilon_{12}}.
+\end{equation*}
+
+\subsection{Nuclear Partition Functions}
+While there are excited nuclear states to access them requires temperatures of
+$10^{10}K$. Thus only the ground state degeneracy matters and
+\begin{equation*}
+	q_{nucl} = \omega_1.
+\end{equation*}
+For most cases the nuclear partition function is just omitted.
+
+\section{Thermodynamic Relations with the Ideal Gas}%
+\label{sec:RIG}
+Taking the definition of the Helmholtz energy in terms of the canonical ensemble
+we have for the monotonic ideal gas,
+\begin{align*}
+	A(N,V,T) &= -kT\ln{\mathcal{Q}}\\
+			 \quad\\
+			 &= -kT\ln{\left[ \left(\frac{V}{\Lambda^{3}}\right)^N(\omega_1 +
+			 \omega_2e^{-\beta\Delta\epsilon_{12}})^N \frac{1}{N!} \right]}\\
+			 \quad\\
+			 &= -NkT\ln{\frac{V}{\Lambda^{3}}} -NkT\ln{(\omega_1 +
+			 \omega_2e^{-\beta\Delta\epsilon_{12}})} +NkT\ln{N} - NkT\\
+			 \quad\\
+			 &= NkT\left( -\ln{\frac{V}{\Lambda^{3}}} -\ln{(\omega_1 +
+			 \omega_2e^{-\beta\Delta\epsilon_{12}})} +\ln{N} - 1 \right).
+\end{align*}
+The electronic term is small so,
+\begin{align*}
+	A &\approx -NkT\left(\ln{\frac{V}{\Lambda^{3}}} -\ln{N} + 1 \right)\\
+	\text{or}\\
+	A &\approx -NkT\left(\ln{\frac{V}{N\Lambda^{3}}} +1 \right).
+\end{align*}
+
+At this point it is helpful to note that,
+\begin{equation*}
+	\ln{\mathcal{Q}} = N\left(\ln{\frac{V}{N\Lambda^{3}}(\omega_1 +
+		\omega_2e^{-\beta\Delta\epsilon_{12}}) +1 \right).
+\end{equation*}
+
+Pressure is given by,
+\begin{equation*}
+	p = kT\left(\frac{\partial \ln{\mathcal{Q}}}{\partial T}\right)_{N,V} =
+	\frac{NkT}{V}.
+\end{equation*}
+
+Energy is,
+\begin{equation*}
+	E = kT^2 \left(\frac{\partial \ln{\mathcal{Q}}}{\partial T}\right)_{N,V} =
+	\frac{3}{2}NkT + \frac{N\omega_2\Delta\epsilon_{12}
+	e^{-\beta\Delta\epsilon_{12}}} {q_{elec}}
+\end{equation*}
+
+Entropy is,
+\begin{align*}
+	S &= \frac{E}{T} - \frac{A}{T}\\
+	\quad\\
+	S &= \frac{3}{2}Nk + \frac{N\omega_2\Delta\epsilon_{12}
+	e^{-\beta\Delta\epsilon_{12}}}{q_{elec}T} - NkT\left(
+	-\ln{\frac{V}{\Lambda^{3}}} -\ln{(\omega_1 +
+	\omega_2e^{-\beta\Delta\epsilon_{12}})} +\ln{N} - 1 \right)\\
+	\quad\\
+	  &= Nk\left( \frac{5}{2} + \ln{\frac{V}{N\Lambda^{3}}}\right) + Nk\ln(\omega_1 +
+		\omega_2e^{-\beta\Delta\epsilon_{12}}) + \frac{N\omega_2\Delta\epsilon_{12}
+		e^{-\beta\Delta\epsilon_{12}}} {q_{elec}}\\
+	\quad\\
+	  &= Nk\left( \frac{5}{2} + \ln{\frac{V}{N\Lambda^{3}}}\right) + S_{elec}.
+\end{align*}
+
+Using,
+\begin{equation*}
+	\mu(T, p) = -kT \left(\frac{\partial \ln{\mathcal{Q}}}{\partial
+	N}\right)_{V,T},
+\end{equation*}
+one can similarly find the chemical potential. The procedure is the same for
+all thermodynamic properties.

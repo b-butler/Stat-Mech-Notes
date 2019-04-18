@@ -1,0 +1,146 @@
+% Chapter 2 Notes
+
+\subsection{Assumptions}
+
+\begin{itemize}
+
+	\item No uncertainty in energy states.
+
+	\item Each system is a pure system.
+
+	\item An isolated system is equally likely to be in any available state.
+
+	\item The average of a property over all available microstates is the
+		macroscopic value.
+
+\end{itemize}
+
+\section{MicroCanonical}\label{sec:MicroCanonical}
+
+For a system with constant number, volume, and energy, the number of microstates
+is \[ \Omega = \Omega(N, V, E).\]
+
+Now take an ensemble or collection of systems like this.Then, \[ E_{tot} = A E
+\]\[N_{tot} = A N \] \[ V_{tot} = A V.\]  Since we have no reason to favor one
+system over the other, we assume each state with the same $N, V, E$ is equally
+probable. This is known as the principle of equal \textit{a priori}
+probabilities. 
+
+\section{Canonical}\label{sec:Canonical}
+
+\subsection{Deriving the Partition Function}
+
+Now lets take a ensemble of systems with the same temperature, volume, and
+number. The ensemble is put into a heat bath until it is fully equilibrated,
+and then moved into perfect thermal insulation. The entire ensemble then becomes
+a system in the microcanonical ensemble.
+
+We know that the system must obey, \[ A = \sum_j{a_j} \]\[ E_{tot} = \sum_j{a_j
+E_j} \text{ where } a_j \text{ is the occupancy number of state j}.\] We also
+know that for each energy $ E_j, \Omega(E_j) $ unique quantum states exist. We
+do not know the occupancy number of states, however.
+
+We do know (assumption) that for the microcanonical ensemble each state is
+equally likely. This means that each state for the entire canonical ensemble is
+equally likely since the entire canonical ensemble is a system in the
+microcanonical ensemble; that is all combinations of occupancy numbers is
+equally likely.
+
+The number of distributions of occupancy numbers is given by \[ W(\vec{a}) =
+\frac{A!}{ \prod_{j}{a_j!}}.\]  This a multinomial coefficient meaning that
+at large $A$ it is very sharply peaked; in fact, arbitrarily so at large
+enough $A$. The probability of being in state j is then, \[ P_j =
+\frac{\bar{a_j}}{A} = \frac{\sum_a{W(\vec{a})a_j(\vec{a})}}{A
+\sum_a{W(\vec{a})}}.\] At infinite number of systems in an
+ensemble, all contributions besides the most common become
+completely negligible, thus \[ P_j = \frac{\bar{a_j}}{A} =
+\frac{a_j^{*}}{A}.\] 
+
+We now have a maximization problem with the following constraints.
+\[ A = \sum_{j}{a_j} \]
+\[ E_{tot} = \sum_{j}{a_j E_j}.\]
+
+Since $\ln$ is a monotonic function and, thus, will preserve maxima and minima of
+inputted functions, $\ln(W(\vec{a}))$ can be maximized instead of $W(\vec{a})$.
+For further calculations it behooves us to recognize that \[ \ln(W) = \ln(A!) -
+\sum_j{\ln(a_j!)}.\] Note the first term is constant and the second is
+approximately \[-\sum_j{a_j \ln(a_j)} + \sum_{j}{a_j}.\]
+Then,
+\[ \frac{\partial ( \ln W(\vec{a}) - \alpha \sum_{j}{a_j} - \beta \sum_j{a_j
+E_j})}{\partial a_{k}} = 0. \]
+
+
+For each $k$ then, \[ \ln(a^*_k)+ \alpha + 1 + \beta E_k = \] or \[ a_k^* =
+e^{-\alpha^{'}}e^{-\beta E_{k}}.\] Summing over all $(a_j^*)$ gives, \[ A =
+e^{ -\alpha^{'}}\sum_{j}{e^{ - \beta E_j}}. \] Finally, \[ P_j =
+\frac{e^{-\alpha^{'}}e^{-\beta E_{k}}}{e^{ -\alpha^{'}}\sum_j{e^{ -\beta E_{j}}}} =
+\frac{e^{-\beta E_k}}{\sum_j{e^{ -\beta E_j}}}.\]
+
+We call the denominator $Q$ and label it the partition function. We know show
+the ensemble energy and some of its derivatives.
+
+\subsection{Finding $\beta$}
+
+\[\bar{E} = \frac{\sum_{j}{E_j e^{-\beta E_{j}}}}{Q}.\]
+\[ p_j = - \left(\frac{\partial E}{\partial V}\right)_N.\]
+\[ \bar{p} = - \frac{\sum_j{\left( \frac{\partial E}{\partial V} \right)_{N}
+e^{-\beta E_j}}}{Q}.\]
+
+We can then find,
+\[ \left( \frac{ \partial \bar{E} }{ \partial V}\right)_{N, \beta} = -\bar{p}
++ \beta \overline{Ep} - \beta \bar{E} \bar{p} \] and
+\[ \left( \frac{ \partial \bar{p} }{ \partial \beta }\right)_{N, V} =
+\bar{E}\bar{p} - \overline{Ep}.\]
+
+Comparing the thermodynamic and ensemble averages we see,
+\[\left( \frac{ \partial \bar{E} }{ \partial V}\right)_{N, \beta} +
+\beta \left( \frac{ \partial \bar{p} }{ \partial \beta }\right)_{N, V} =
+- \bar{p},\]
+
+\[\left( \frac{ \partial E }{ \partial V}\right)_{N, T} -
+T \left( \frac{ \partial p }{ \partial T }\right)_{N, V} = - p.\]
+
+One can see from this that $ \beta = \frac{k}{T} $. k will be the same for any
+system as can be seen from a thought experiment where the ensemble consists of
+two system composites with the same $N, V, T$. They individual systems will be
+in equilibrium and from prior calculations the partition function and
+probability functions are completely separable. This requires they have the same
+constant k.
+
+\subsection{Entropy}
+
+Let \[f = \ln Q.\] Then, \[ df = \left( \frac{ \partial f }{ \partial \beta }
+\right)_{E_{j}} d \beta + \sum_{k}{\left( \frac{ \partial f }{ \partial E_{k}}
+\right)_{\beta, E_{j \neq k}} d E_{k}}.\] This derivative is equivalent of
+slightly changing the volumes of all systems which changes the energy levels
+(which is nothing but PV work) and slightly change the temperature before
+isolated the ensemble again.
+
+This becomes with some manipulation,
+\[ df = -\bar{E} d \beta - \beta \sum_{k}{P_{k} dE_{k}} \]
+\[ d(f + \beta \bar{E}) = \beta \left( d \bar{E} - \sum_{k}{P_{k} dE_{k}}
+\right).\]
+
+The first term is the average energy increase in a system, while the second is the
+average work done on a system meaning the argument in parenthesis is nothing but
+the reversible heat. This requires that $\beta$ is an integrating factor of $f$.
+\[ d(f + \beta \bar{E}) = \beta q_{rev} \]
+\[ d\left(f + \frac{ \bar{E} }{kT} \right) = \frac{q_{rev}}{kT}.\]
+Thermodynamically the left side must be $ dS/k $, so finally,
+\[ dS = \frac{d \bar{E}}{T} + k d( \ln Q).\]
+
+\subsection{Spontaneous Processes}
+One can think of spontaneous processes as processes that occur because an
+increase in available states.
+
+We take the known relation,
+\[ A(N, V, T) = -k T \ln Q(N, V, T).\]
+In addition, one can also recognize that a summation over energy levels rather
+than states can be done.
+\[ Q = \sum_{l}{\Omega(N, V, E_{l}) e^{- \beta E_{l}}}.\]
+For a spontaneous process we require that,
+\[ \Omega_2 \geq \Omega_1.\]
+Then,
+\[ Q_2 - Q_1 = \sum_{l}{(\Omega_2 - \Omega_1) e^{-\beta E_{l}}} \geq 0.\]
+Finally,
+\[ \Delta A = A_2 - A_1 = - kT \ln \frac{Q_2}{Q_1} < 0.\]

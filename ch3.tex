@@ -1,0 +1,229 @@
+% Chapter 3 Notes
+\section{Grand Canonical Ensemble}
+The grand canonical ensemble is a collection of systems with the same volume,
+temperature, and chemical potential. The ensemble can be thought of as a
+collection of systems which have been equilibriated w.r.t chemical potential and
+temperature by placing the ensemble in a heat bath and particle bath. The
+ensemble once equilibriated is then isolated. Each system within the ensemble is
+free to exchange particles or energy though.
+
+With the concept of the GC ensemble established, these equations are easily
+acertained.
+\begin{align*}
+	\sum_N \sum_j{a_{Nj}} & = A \\\\
+	\sum_N \sum_j{a_{Nj}E_{Nj}} & = E_{tot} \\\\
+	\sum_N \sum_j{a_{Nj}N} & = N_{tot}
+\end{align*}
+Note that $a_{Nj}$ is the occupancy number of systems with $N$ particles and the
+$j$-th energy state. Like the canonical ensemble the GC ensemble is a system in
+the microcanonical ensembe so we can use the principle of equal \textit{a
+priori} probabilities to the distributions of occupancy numbers. The number of
+states given a distribution $\bar{a_{Nj}}$ is
+\begin{equation*}
+	W(\bar{a_{Nj}}) = \frac{A!}{\prod_N{}\prod_j{a_{Nj}!}}.
+\end{equation*}
+The solution to maximizing $W$ with the constrants given is nearly identical to
+the C ensemble method and simply becomes
+\begin{align*}
+	a_{Nj}^{*}&= e^{-\alpha}e^{-\beta E_{Nj}}e^{-\gamma N} \text{ thus,} \\\\
+	P_{Nj}&= \frac{a_{Nj}^*}{A} = \frac{e^{-\alpha}e^{-\beta E_{Nj}}e^{-\gamma
+	N}}{\sum_N \sum_j{e^{-\alpha}e^{-\beta E_{Nj}}e^{-\gamma N}}}
+\end{align*}
+We note that the denominator is a sum of all states with a two biasing factors
+based on $\beta E_{Nj}$ and $\gamma N$. Like the C ensemble this will be called
+the partition function of the GC ensemble. We label it $\Xi$.
+
+\subsection{Finding $\beta$ and $\gamma$}
+Lets think of the GC ensemble as collections of canonical ensembles with varying
+numbers. Each ensemble is in thermal equilibrium since the entire GC is. If we
+suddenly prevent molecular transport. Then $\Xi$ breaks down to
+\begin{equation*}
+	\Xi = e^{\gamma N} \sum_j{ e^{-\beta E_j}} \text{, } \forall N.
+\end{equation*}
+This is the canonical partition function with an extra constant which can be
+ignored since this constant in probabilities would be applied to both the
+numerator and denominator. Thus, $\beta$ must be the same as the canonical
+ensemble.
+
+$\gamma$ is a little more involved to derive. If we take the full derivative of
+$\ln \Xi$, we find
+\begin{equation*}
+	df = \left(\frac{\partial f}{\partial \beta}\right)_{\gamma,E_{Nj}} d \beta
+	+ \left(\frac{\partial f}{\partial \gamma}\right)_{\beta,E_{Nj}} d \gamma
+	+ \left(\frac{\partial f}{\partial \gamma}\right)_{\beta,\gamma,E_{N_ik\neq
+	Nj}} d E_{Nj}.
+\end{equation*}
+This ends up being
+\begin{align*}
+	df &= -\bar{E} d \beta - \bar{N} \gamma + \beta \bar{p} dV \\
+	d(f + \beta \bar{E} + \gamma \bar{N}) &= \beta d \bar{E} + \beta \bar{p} dV
+	+ \gamma d\bar{N}.
+\end{align*}
+For multicomponent systems this is the enemble equivalent to the differential
+form of entropy. Then $\gamma$ must be
+\begin{equation*}
+	\gamma = -\frac{\mu}{kT}.
+\end{equation*}
+An important note is that $\gamma$ is essential another energy scale (chemical
+potential) compared to thermal energy.
+
+\subsection{Other Points}
+$\Xi$ can be written as,
+\begin{equation*}
+	\sum_N{Q(N)e^{\beta\mu N}}
+\end{equation*}
+
+Often times we see $e^{\beta\mu}$ as $\lambda$ which is called the
+fugacity and is the absolute activity of a state. This can be seen since
+\begin{align*}
+	\mu &= kT \ln \lambda \\
+	\Delta \mu &= kT \ln(\lambda_2 / \lambda_1)
+\end{align*}
+
+The function $pV$ is the natural thermodynamic function for the GC ensemble. The
+proof is simple,
+\begin{align*}
+	S &= \frac{\bar{E}}{T} - \frac{\bar{N}\mu}{T} + k\ln\Xi \\
+	G &= \mu N = E + pV - TS \\
+	pV &= \mu N - E + TS = \mu N - E + T ( \frac{\bar{E}}{T} -
+	\frac{\bar{N}\mu}{T} + k\ln\Xi)
+\end{align*}
+
+One final note, the summation over $N$ goes to infinity since in the limit of
+infinite systems there is a nonzero chance of at least one system having
+infinite particles. However, we will see that practically speaking the summation
+could be cut off for reasons of fluctuations.
+
+\section{Gibb's Ensemble}\label{sec:Gibb's Ensemble}
+Gibb's ensemble is a collection of systems that have been thermally
+equilibriated and have impermeable but flexible walls. Thus pressure is also
+equal each system. Number is also fixed by impermeability. $\Delta$ is the
+standard denotation of the partition function which is,
+\begin{equation*}
+\sum_E \sum_V \Omega(V, E)e^{ -\beta E}e^{\beta pV}
+\end{equation*}
+True to its name the natural thermodynamic function for the Gibb's ensemble is
+Gibb's energy.
+
+\section{MicroCanonical Ensembles}%
+\label{sec:MicroCanonical}
+
+\subsection{Universality of Microcanonical Ensemble}
+For each ensemble, when summing over some combination
+of energy levels, volumes, or number, we find the degeneracy by the
+microcanonical partition function $\Omega$. Thus all other ensembles can be
+thought of as deviations from the microcanonical. The exponential terms are
+biasings based on intensive properties and the sums represent summations over
+the extensive properties.
+
+\subsection{Boltzman Equation}
+If we start from the definition of entropy derived from the GC partition
+function, we find the famous Boltzman equation which is actually on Boltzman's
+tomb, and gives intuition as to the nature of entropy.
+\begin{align*}
+	S &= k\ln\Xi + k \left( \sum_{N,j}{\beta E_{Nj} \frac{e^{-\beta E_{Nj}}
+		e^{-\gamma N}}{\Xi}} +
+		\sum_{N,j}{\gamma \frac{Ne^{-\beta E_{Nj}} e^{-\gamma N}}{\Xi}}
+	\right) \\
+	S &= k\ln\Xi + k \sum_{N,j}{\left( \beta E_{Nj} + \gamma N \right)
+		\frac{e^{-\beta E_{Nj}} e^{-\gamma N}}{\Xi}}
+\end{align*}
+Recall that,
+\begin{align*}
+	\frac{a_{Nj}^*}{A} &= \frac{e^{-\beta E_{Nj}} e^{-\gamma N}}{\Xi}\\
+	\text{and}\\
+	\ln \frac{a_{Nj}^*}{A} &= \ln a_{Nj}^* - \ln A =
+		\ln \left(e^{-\beta E_{Nj}} e^{-\gamma N} \right) - \ln\Xi\\
+	&= -(\beta E_{Nj} + \gamma N + \ln\Xi)
+\end{align*}
+Thus,
+\begin{align*}
+	S &= k\ln\Xi - k \sum_{Nj}{(\ln{a_{Nj}^*} - \ln{\Xi} + \ln{A})
+	\frac{a_{Nj}^*}{A}}\\
+	  &= k\ln{A} - \frac{k}{A} \sum_{N,j}{a_{Nj}^*\ln{a_{Nj}^*}}
+\end{align*}
+This is for each system in the GC ensemble. The entire entropy is then,
+\begin{align*}
+	S &= kA\ln{A} - k\sum_{N,j}{a_{Nj}^*\ln{a_{Nj}^*}}\\
+	  &= k \ln{\frac{A}{\sum_{N,j}{a_{Nj}^*\ln{a_{Nj}^*}}}}\\
+	  &= k \ln{W(\vec{a_{Nj}^*})}\\
+	  &= k \ln{\Omega}.
+\end{align*}
+
+\section{Fluctuations}\label{sec:Fluctuations}
+For the assumption that large systems only assume states in their ensemble
+average, fluctuations around the mean must be small. If they were not, then
+statistical mechanics would predict that we should observe macroscopic
+fluctuations in state. Two canonical ways of showing that fluctuations are
+indeed small (as compared to the mean) the energy of the canonical and number of
+the grand canonical ensemble will be shown. The most important equation when
+dealing with fluctuations or second moments around the mean is,
+\begin{equation*} 
+	\sigma_M^2 = \overline{\left( M - \bar{M}\right)^2} = \overline{M^2} - \bar{M}^2
+\end{equation*}
+
+\subsection{Energy Fluctuations}
+For the canonical ensemble $\overline{E^2}$ is
+\begin{align*}
+	\sum_j{E_j^2 P_j} &= \frac{1}{Q}\sum_j{E_j^2 e^{-\beta E_j}}\\
+					 &= \frac{-1}{Q} \frac{\partial}{\partial \beta}
+					 \sum_j{E_j e^{-\beta E_j}}
+\end{align*}
+The last sum is just the average energy without the partition function's
+normalization, so
+\begin{equation*}
+	\overline{E^2} = \frac{-1}{Q} \frac{\partial}{\partial \beta} (\bar{E}Q).
+\end{equation*}
+Via product rule we get
+\begin{align*}
+	\overline{E^2} &= -\frac{\partial\bar{E}}{\partial \beta} - \bar{E}
+	\frac{\partial\ln{Q}}{\partial \beta}\\
+			  &= kT^2 \frac{\partial\bar{E}}{\partial\beta} + \bar{E}^2.
+\end{align*}
+Finally, via the definition of the varience,
+\begin{align*}
+	\sigma_E^2 &= kT^2 \left( \frac{\partial\bar{E}}{\partial T} \right)_{N,V}
+			   &= kT^2 C_v
+\end{align*}
+Compared to the average energy then the average fluctuations are,
+\begin{equation*}
+	\frac{\sigma_E}{\bar{E}} = \frac{(kT^2 C_v)^{\frac{1}{2}}}{\bar{E}}
+\end{equation*}
+For an ideal gas $\bar{E}$ scales as $O(NkT)$ while $C_v$ scales as $O(Nk)$.
+Thus the fluctuations are proportional to $O(N^{\frac{1}{2}})$ and in a large
+system are very small. It is worth noting the same result can be achieved from a
+Taylor expansion of the probability distribution around $\bar{E}$.
+
+\subsection{Density Fluctuations}
+For the GC ensemble we shall look at number fluctuations. The fluctuations are
+\begin{align*}
+	\sum_{N,j}{N^2 P_{Nj}} &= \frac{1}{\Xi}\sum_{N,j}{N^2 e^{-\beta E_{Nj}}
+	e^{-\gamma N}} = \frac{-1}{\Xi} \frac{\partial}{\partial\gamma}
+	\sum_{Nj}{N e^{-\beta E_{Nj}}e^{-\gamma N}}\\
+						   &= \frac{-1}{\Xi} \frac{\partial}{\partial\gamma}
+						   (\bar{N}\Xi)\\
+						   &= \frac{\partial\bar{N}}{\partial\gamma} -
+						   \bar{N} \frac{\partial\ln{\Xi}}{\partial\gamma}\\
+						   &= kT \left( \frac{\partial\bar{N}}{\partial\mu}
+						   \right)_{V, T} + \bar{N}^2
+\end{align*}
+This looks very similar to the canonical example and should because it is
+analogous. All we need now is the thermodynamic relationship,
+\begin{equation*}
+	\left( \frac{\partial\mu}{\partial N} \right)_{V,T} =
+	- \frac{V^2}{N^2} \left( \frac{\partial p}{\partial\mu}\right)_{N,T}.
+\end{equation*}
+The fluctuations are,
+\begin{align*}
+	\sigma_N &= \left( \frac{\bar{N}^2 kT\kappa}{V}\right)^{\frac{1}{2}}\\
+	\frac{\sigma_N}{\bar{N}} &= \left( \frac{kT\kappa}{V} \right)^{\frac{1}{2}}.
+\end{align*}
+Here $\kappa$ is the isothermal compressibility which is $\frac{1}{p}$ for the
+ideal gas. Then the fluctuations for the ideal gas is once again the property to
+the $\frac{-1}{2}$. Furthermore, like before the Taylor expansion can be
+performed to get similar results.
+
+For number fluctuation, this has measurable effects on the Raleigh scattering.
+The functions make it so that the scattering is a function of wavelength to the
+$-4$th. Therefore, in our atmosphere, blue light gets scattered much more and
+the sky is blue and sunsets are red.
