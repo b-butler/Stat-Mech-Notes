@@ -1,0 +1,10 @@
+# Primary LaTeX documents
+*.aux
+*.log
+*.dvi
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# Backup files
+*~
