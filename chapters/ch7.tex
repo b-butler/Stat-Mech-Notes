@@ -1,9 +1,182 @@
 \section{Formulation of the Classical Partition Function}%
 \label{sec:cpf}
+Quantum mechanics approaches classical mechanics when quantum numbers become
+sufficiently high. This occurs at relatively high $T$ for a given quantum
+quantity. This means for many purposes we can begin our derivation from a
+classical mechanics standpoint and above a certain threshold quantity we achieve
+accurate results. For instance the translation quantum number at room
+temperature, $n\approx 10^8$, thus a classical mechanical approximation is very
+accurate. However, at the same conditions the vibrational quantum number is too
+low to achieve accurate results using a classical approach.
 
 \subsection{Molecular Partition Function}
+We know for a quantum mechanical derivation of molecular partition functions we
+arrive at
+\begin{equation*}
+	q_p = \sum_{j\in J}{e^{-\beta\H_p}},
+\end{equation*}
+for a particular separable mode of energy $p$.  Hence, we assume that for a
+classical system we take the argument of the summation and integrate over
+accessible energy levels,
+\begin{equation*}
+	q_{p, class} = \int_{\H_p}{e^{-\beta\H_p}\d{\H_p}}.
+\end{equation*}
+The whole molecular partition function is then,
+\begin{align*}
+	q_{class} &= \int_{\H}{{e^{-\beta\H}\d{\H}}}\\
+			  &= \nint e^{-\beta\H(\vec{p},\vec{q})}
+			  \d{\vec{p}}\d{\vec{q}},
+\end{align*}
+where the second line takes the Hamiltonian to be a function of coordinates
+$\vec{q}$ and conjugate momenta $\vec{p}$. The dimensionality of the vectors $q$
+and $p$ is simply the dimensionality of the molecule or the number of degrees of
+freedom that must be satisfied to fully describe the molecule.
+
+\subsubsection{Translational Partition Function}
+We know classically the energy of translation is
+\begin{equation*}
+	\H = \frac{1}{2m}(p_x^2 + p_y^2 + p_z^2).
+\end{equation*}
+Then, the translational partition function is,
+\begin{align*}
+	q_{trans} &= \nint \exp\left(-\frac{\beta(p_x^2 + p_y^2 +
+	p_z^2)}{2m}\right)\d{p_x}\d{p_y}\d{p_z}\d{x}\d{y}\d{z}\\
+			  &= V \iiint \exp\left(-\frac{\beta(p_x^2 + p_y^2 +
+	p_z^2)}{2m}\right)\d{p_x}\d{p_y}\d{p_z}\\
+			  &= V \left(\int_{-\infty}^{\infty}{e^{-\frac{\beta p^2}
+			  {2m}}}\d{p}\right)^{3}\\
+			  &= V \cdot \left(\sqrt{\frac{2m\pi}{\beta}}\right)^{3}\\
+			  &= V (2\pi mkT )^{3/2}.
+\end{align*}
+$V$ comes from the lack of spacial dependence so the volume integral evaluates
+to the volume. The last two lines come from the error function. When we compare
+this to the classical approximation made in chapter 5,
+\begin{equation*}
+	V \left(\frac{2\pi mkT}{h^2} \right)^{3/2},
+\end{equation*}
+we find that a factor of $h^{-3}$ is missing.
+
+\subsubsection{Rotational Partition Function}
+For a classical rigid rotor the Hamiltonian is,
+\begin{equation*}
+	\H = \frac{1}{2I}\left(p_{\theta}^2 +
+	\frac{p_{\phi}^{2}}{\sin^{2}\theta}\right).
+\end{equation*}
+The partition function is then,
+\begin{align*}
+	q_{rot} &= \int_{-\infty}^{\infty}{} \int_{-\infty}^{\infty}{}
+	\int_{0}^{2\pi}{} \int_{0}^{\pi}{e^{-\beta\H}
+	\d{p_{\theta}}\d{p_{\phi}}\d{\phi}\d{\theta}}\\
+			&= 2\pi \int_{-\infty}^{\infty}{e^{-\beta
+			p_{\theta}^{2}/2I}\d{p_{\theta}}}
+			\int_{-\infty}^{\infty}{} \int_{0}^{\pi}{e^{-\beta
+			p_{\phi}/\sin^{2}\theta}\d{p_{\phi}}\d{\theta}}.
+\end{align*}
+Note that the first argument of the integral is another error function so we can
+further simplify to,
+\begin{equation*}
+	q_{rot} = 2\pi \cdot \sqrt{2\pi IkT} \int_{-\infty}^{\infty}{}
+	\int_{0}^{\pi}{e^{-\beta p_{\phi}/\sin^{2}\theta}\d{p_{\phi}}\d{\theta}}.
+\end{equation*}
+From here the last two integrals must be carried out. I am not currently sure
+how to do them though. The answer becomes,
+\begin{equation*}
+	q_{rot} = 8\pi^{2} IkT,
+\end{equation*}
+however. Again notice that a factor of $h^{-2}$ is missing from the partition
+function.
+
+\subsubsection{Vibrational Partition Function}
+For a harmonic oscillator the Hamiltonian is,
+\begin{equation*}
+	\H = \frac{p^{2}}{2\mu} + \frac{k}{2}x^{2},
+\end{equation*}
+where the first term captures the kinetic energy and the second potential. Then,
+$q_{vib}$ is,
+\begin{align*}
+	q_{vib} &= \int_{-\infty}^{\infty}{} \int_{-\infty}^{\infty}{\exp \left(
+	-\beta\frac{p^{2}}{2\mu} + \frac{k}{2}x^{2}\right) \d{x}\d{p}}\\
+			&= \int_{-\infty}^{\infty}{e^{-\beta p^{2}/2\mu}\d{p}}
+			\int_{-\infty}^{\infty}{e^{-\beta kx^{2}/2}\d{x}}\\
+			&= (2\mu\pi k_b T)^{1/2}\left(\frac{2\pi k_b T}{k}\right)^{1/2}\\
+			&= \frac{k_b T}{\nu} \text{, where } \nu =
+			\left(\frac{k}{4\pi^{2}\mu}\right)^{1/2}.
+\end{align*}
+Note once again this integral was done using the error function and that this is
+off by a factor of $h$.
+
+\subsubsection{Adding Planck's Constant}
+For each of the molecular partition functions we have examined thus far, the
+final result is off by a factor of $h^{s}$ where $s$ is the dimension of
+$\vec{p}$ or $\vec{q}$. From this we hypothesis,
+\begin{equation*}
+	q = \sum_{j\in J}{e^{-\beta\H}} \to \frac{1}{h^{s}}
+	\nint{e^{-\beta\H} \prod_{j=1}^{s}{\d{p_{j}}\d{q_{j}}}}.
+\end{equation*}
 
 \subsection{Ensemble Partition Function}
+Taking the high temperature limit of the ensemble partition function for
+noniteracting molecules,
+\begin{equation*}
+	\Q = \frac{q^{N}}{N!},
+\end{equation*}
+we apply the classical molecular partition function to arrive at,
+\begin{align*}
+	\Q &= \frac{1}{N!}\prod_{j=1}^{N}\left({\frac{1}{h^{s}}\nint
+			e^{-\beta\H_{j}} \prod_{i=1}^{s}{\d{p_{ji}}\d{q_{ji}}}}\right).\\
+	   &= \frac{1}{h^{sN}N!}\prod_{j=1}^{N}{\left(\nint
+	   e^{-\beta\H_{j}} \prod_{i=1}^{s}{\d{p_{ji}}\d{q_{ji}}}\right)}.
+\end{align*}
+To produce the standard formulation of the classical partition function, we
+relabel the indices $ji \to k$ so that $k = (j-1)s + i$. That is $k \in [0,s]$
+represents the former indices $1i$ or the position and momenta of the first
+particle. Doing this allows us to simplify the equation as,
+\begin{align*}
+	\Q &= \frac{1}{h^{sN}N!}\nint{e^{-\beta\sum_{j}{\H_{j}}}
+	\prod_{k=1}^{sN}{\d{p_{k}}\d{q_{k}}}}\\
+	   &= \frac{1}{h^{sN}N!}\nint{e^{-\beta\H}
+	\prod_{k=1}^{sN}{\d{p_{k}}\d{q_{k}}}}.
+\end{align*}
+The Hamiltonian in the last line is the many body Hamiltonian not to be confused
+with a molecular or sub-molecular Hamiltonian. This is the correct form of the
+classical limit even though we assumed noninteracting molecules and merely
+postulated the form from an observation of the quantum derivation.
+
+Examining a monatomic gas with a Hamiltonian of,
+\begin{equation*}
+	\H = \frac{1}{2m} \sum_{j=1}^{N}{(p_{x}^{2} + p^{2}_y + p^{2}_{z}) +
+	U(\vec{r}_{1}, \vec{r}_{2}, \ldots, \vec{r}_N )},
+\end{equation*}
+where $\vec{r}_i$ is the position vector of particle $i$. Then taking the
+momentum integrals (using the error function), we get
+\begin{equation*}
+	\Q_{class} = \frac{1}{N!}\left(\frac{2\pi m kT}{h^{2}}\right)^{3N/2} Z_{N},
+\end{equation*}
+where $Z_N$ is 
+\begin{equation*}
+	Z_N = \int_{V}{e^{-\beta U(\vec{r}_{1}, \vec{r}_{2}, \dots, \vec{r}_N )}
+	\d{\vec{r}_{1}}\d{\vec{r}_{2}}\cdots\d{\vec{r}_{N}}}.
+\end{equation*}
+$Z_N$ has a special name, \textit{the classical configuration integral}. This
+integral encompasses all the intermolecular interactions present in a system.
+
+\subsection{Hybrid Partition Functions}
+When some degrees of freedom can be treated classically and others must be
+treated quantumly, if the Hamiltonian is separable in those degrees of freedom,
+so is the partition function into a classical and quantum part.
+\begin{align*}
+	\H &= \H_{class} + \H_{quant}\\
+	\Q &= \Q_{class} \Q_{quant}\\
+	   &= \frac{\Q_{quant}}{h^{sN}N!}
+	   \int{e^{-\beta\H_{class}}\d{\vec{p}_{class}}\d{\vec{q}_{class}}}.
+\end{align*}
+Similarly, if the molecular Hamiltonian is separable we have,
+\begin{align*}
+	\H &= \H_{class} + \H_{quant}\\
+	q &= q_{class} q_{quant}\\
+	   &= \frac{q_{quant}}{h^{s}}
+	   \int{e^{-\beta\H_{class}}\d{\vec{p}_{class}}\d{\vec{q}_{class}}}.
+\end{align*}
 
 \section{Phase Space and the Liouville Equation}%
 \label{sec:psle}
