@@ -14,19 +14,22 @@
 % User defined commands
 \renewcommand{\d}{\text{d}}
 \newcommand{\note}{\textit{Note:} }
-\newcommand{\H}{\mathcal{H}}
+\renewcommand{\H}{\mathcal{H}}
 \newcommand{\Q}{\mathcal{Q}}
+\newcommand{\chapterpath}[1]{./chapters/#1}
 \begin{document}
 
 \chapter{Canonical Ensemble}
-\include{ch2}
+\include{\chapterpath{ch2}}
 \chapter{Other Ensembles and Fluctuations}
-\include{ch3}
+\include{\chapterpath{ch3}}
 \chapter{Boltzman, Fermi-Dirac, and Bose-Einstein Statistics}
-\include{ch4}
+\include{\chapterpath{ch4}}
 \chapter{The Monotonic Ideal Gas}
-\include{ch5}
+\include{\chapterpath{ch5}}
 \chapter{Ideal Diatomic Gas}
-\include{ch6}
+\include{\chapterpath{ch6}}
+\chapter{Classical Mechanics}
+\include{\chapterpath{ch7}}
 
 \end{document}
