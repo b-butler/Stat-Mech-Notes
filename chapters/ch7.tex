@@ -181,10 +181,154 @@ Similarly, if the molecular Hamiltonian is separable we have,
 \section{Phase Space and the Liouville Equation}%
 \label{sec:psle}
 
-\subsection{Density of States}
+\subsection{Defining of Phase Space and Density of States}
+We take a system of $N$ particles, where each particle has $s$ degrees of
+freedom, that is $s$ coordinates can uniquely define the particle. To complete
+the description of the classical system we also need to define $s$ conjugate
+momenta that correspond to the $s$ coordinates. The system is then uniquely
+defined by $l=sN$ coordinates and conjugate momenta. The total system then
+consists of  $2l$ values.
+
+Having an uniquely defined classical system, we now have motivation to define a
+phase space that projects the classical system into a new dynamical space which
+we will call the phase space. We project the classical system to a subset of
+$\mathbb{R}^{2l}$ which works to a prism of $2l$ dimensional Euclidean space
+where the extent of each dimension is the physical limits of the system.  Each
+system at a specified time is then a point in this space. This space is the
+\textit{phase space} and those points are \textit{phase points}.
+
+For a given phase point, its past and future is uniquely defined by the laws of
+motion and the current position in phase space. We postulate that trajectories
+are continuous which for a Hamiltonian system is true since
+\begin{equation*}
+	\dot{q}_{j} = \frac{\partial\H}{\partial p_{j}} \text{ and } \dot{p}_{j} = -
+	\frac{\partial\H}{\partial q_{j}} \text{ for } j \in 2l.
+\end{equation*}
+Thus, trajectories in this frame work are uniquely defined just like phase
+points. This means that the evolution of $q$ and $p$ can be defined as some
+function of $t$.
+
+We now show the preservation of density on a particular subset of the phase
+space. Using the microcanonical ensemble conservation of $N, V, E$, we define a
+mapping $M:P\to\Omega$, where $P$ is the phase space and $\Omega$ is the subset
+defined by $\{(x_{i})_{1}^{2l} : (x_{i})_{1}^{2l} \sim N, V, E\}$ that is the set
+of points that correspond to a particular $N,V,E$. This is an energy ``surface''
+of a specified number and volume. We let all $X\in\Omega$ be occupied.  That is
+all states are equally likely, this is the classical meaning of the
+\textit{postulate of equal a priori probabilities}. This also suggests that
+each subdomain of $\Omega$ is equally dense since if this was not the case then
+particular regions of the microcanonical ensemble would be favored. However, it
+is important to note, that this \textbf{does not imply uniform density in $P$}.
 
 \subsection{Deriving the Louiville Equation}
+To begin with deriving the Louivile equation, we first create a function $f$
+that gives the infinitesimal density around a phase point. We then have
+\begin{equation*}
+	\rho = f(p(t), q(t))\d{p}\d{q}.
+\end{equation*}
+If we integrate $f$ over the entire domain we retrieve $\mathcal{A}$,
+\begin{equation*}
+	\mathcal{A} = \nint{f(p(t),q(t))\d{p}\d{q}}.
+\end{equation*}
+Any property averaged over all systems is
+\begin{align*}
+	\overline{\phi} &= \frac{\nint{\phi(p(t),q(t))f(p(t),q(t))\d{p}\d{q}}}
+	{\nint{f(p(t),q(t))\d{p}\d{q}}}\\
+	~\\
+	\overline{\phi} &= \frac{\nint{\phi(p(t),q(t))f(p(t),q(t))\d{p}\d{q}}}
+	{\mathcal{A}}.
+\end{align*}
+Gibb's postulate was originally formulated by saying this average corresponds to
+thermodynamical observed variables.
 
+We now turn our attention to the flux of phase points into and out of an
+arbitrary volume about a point $X\inP$. We will prefix quantities in this volume
+with $\delta$. The instantaneous number of phase points in $\delta V$ is given
+by,
+\begin{equation*}
+	\delta N = f(p(t),q(t))\delta p_1 \delta q_{1} \delta p_{2} \cdots \delta
+	q_{l} \delta p_{l}.
+\end{equation*}
+This is just taking $f$ at $X$ and smearing it over the volume $\delta V$. To
+find the total flux we have to consider $2l$ dimensions. However, each dimension
+is equivalent in phase space, i.e.\ momenta and position are not treated
+differently. Therefore, we look at the dimension $q_{1}$ and generalize the
+results. The net flux in the $q_{1}$ dimension is given by the difference of the
+individual fluxes through the orthogonal hyper-surfaces defined by $q_{1}$ and
+$q_{1} + \delta q_{1}$. The flux through first face is given by,
+\begin{equation*}
+	f(q_{1},\ldots,q_{l}, p_{1},\ldots,p_{l})\dot{q}_1 \delta p_1 \cdots \delta p_{l}
+	\delta q_1 \cdots \delta q_{l}.
+\end{equation*}
+Mathematically, this is taking the number of particles per $\delta q_{1}$
+or a linear density as can be seen by,
+\begin{equation*}
+	\frac{\delta N}{\delta q_{1}} = f(q_{1},\ldots,q_{l}, p_{1},\ldots,p_{l})
+	\delta p_1 \cdots \delta p_{l} \delta q_2 \cdots \delta q_{l},
+\end{equation*}
+and multiplying it by the ``velocity'' in the normal direction to the face
+$\partial q_{1}/\partial t$. This is analogous to a flux taken in real space.
+Likewise, the flux at the face defined by $q_{1} + \delta q_{1}$ is given by,
+\begin{equation*}
+	f(q_{1} + \delta q_{1},\ldots,q_{l}, p_{1},\ldots,p_{l})
+	\dot{q}_{1}(q_{1} + \delta q_{1},q_{2},\ldots,q_{l}, p_{1},\ldots,p_{l})
+	\delta p_1 \cdots \delta p_{l} \delta q_2 \cdots \delta q_{l}.
+\end{equation*}
+Taking a Taylor expansion around $q_{1}$ we find the flux at $\delta q_{1}$ is
+approximately,
+\begin{equation*}
+	\left(f_{q_{1}} + \left(\frac{\partial f}{\partial q_{1}}\right)_{q_{1}}
+	\delta q_{1}\right)
+	\left((\dot{q}_{1})_{q_{1}} + \left(\frac{\partial \dot{q}_{1}}
+	{\partial q_{1}}\right)_{q_{1}}\right)
+	\delta p_1 \cdots \delta p_{l} \delta q_2 \cdots \delta q_{l}
+\end{equation*}
+where we have discarded all higher order terms. If we expand out the terms in
+the parenthesis we have,
+\begin{equation*}
+	f_{q_{1}}(\dot{q}_{1})_{q_{1}}
+	+
+	\left(\frac{\partial f}{\partial q_{1}}\right)_{q_{1}}(\dot{q}_{1})_{q_{1}}
+	+
+	f_{q_{1}}\left(\frac{\partial \dot{q}_{1}}{\partial q_{1}}\right)_{q_{1}}
+	\delta q_{1}
+	+
+	\left(\frac{\partial f}{\partial q_{1}}\right)_{q_{1}}
+	\left(\frac{\partial \dot{q}_{1}}{\partial q_{1}}\right)_{q_{1}}\delta
+	q_{1}^{2}.
+\end{equation*}
+Noting again that we will ignore all high order terms, $\delta q_{1}^{2}$ is
+sufficiently small to ignore it. Then if we take the difference between the
+fluxes at the two faces we have,
+\begin{equation*}
+	-\left(f_{q_{1}}\left(\frac{\partial \dot{q}_{1}}
+	{\partial q_{1}}\right)_{q_{1}} + (\dot{q}_{1})_{q_{1}}
+	\left(\frac{\partial f}{\partial q_{1}}\right)_{q_{1}}\right)
+	\delta p_1 \cdots \delta p_{l} \delta q_1 \cdots \delta q_{l}.
+\end{equation*}
+Likewise, for $p_{1}$
+\begin{equation*}
+	-\left(f_{p_{1}}\left(\frac{\partial \dot{p}_{1}}
+	{\partial p_{1}}\right)_{p_{1}} + (\dot{p}_{1})_{p_{1}}
+	\left(\frac{\partial f}{\partial p_{1}}\right)_{p_{1}}\right)
+	\delta p_1 \cdots \delta p_{l} \delta p_1 \cdots \delta p_{l}.
+\end{equation*}
+Here, we recall that there are a total of $2l$ dimensions to analyze the flux
+over $l$ for momentum and $l$ for position. The total change in number in a
+instance of time is,
+\begin{equation*}
+	-\sum_{i=1}^{l}{\left(f_{p_{1}}\left(\frac{\partial \dot{p}_{1}} {\partial
+	p_{1}}\right)_{p_{1}} + (\dot{p}_{1})_{p_{1}} \left(\frac{\partial
+	f}{\partial p_{1}}\right)_{p_{1}} + f_{q_{1}}\left(\frac{\partial \dot{q}_{1}}
+	{\partial q_{1}}\right)_{q_{1}} + (\dot{q}_{1})_{q_{1}}
+	\left(\frac{\partial f}{\partial q_{1}}\right)_{q_{1}}\right)
+	\delta p_1 \cdots \delta p_{l} \delta p_1 \cdots \delta p_{l}}.
+\end{equation*}
+The expression is equivalent to,
+\begin{equation*}
+	\frac{\partial\delta N}{\partial t}.
+\end{equation*}
+If we divide by the volume element we get the density $f$ previously defined.
 \subsection{The Conservation of Extension and Incompressibility}
 
 \section{Equipartition of Energy}%
