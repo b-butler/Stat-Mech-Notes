@@ -328,8 +328,143 @@ The expression is equivalent to,
 \begin{equation*}
 	\frac{\partial\delta N}{\partial t}.
 \end{equation*}
-If we divide by the volume element we get the density $f$ previously defined.
+If we divide by the volume element we get the partial derivative of the  density
+$f$ w.r.t.\ time. We can further simplify this by noting that 
+\begin{equation*}
+	\dot{q}_{j} = \frac{\partial\H}{\partial p_{j}} \text{ and } \dot{p}_{j} = -
+	\frac{\partial\H}{\partial q_{j}}.
+\end{equation*}
+This means that the derivatives of $\dot{q}_{i}$ and $\dot{p}_{i}$ are mixed
+partials of the Hamiltonian. Since mixed partials are equivalent and the two
+differ in signs, they cancel leaving,
+\begin{equation*}
+	\frac{\partial f}{\partial t} = -\sum_{i=1}^{l}{\left((\dot{p}_{1})_{p_{1}}
+	\left(\frac{\partial f}{\partial p_{1}}\right)_{p_{1}} +
+	(\dot{q}_{1})_{q_{1}} \left(\frac{\partial f}{\partial
+	q_{1}}\right)_{q_{1}}\right)}.
+\end{equation*}
+This is the Louville equation which looks very much like a statement of the
+conservation of mass because it is the equivalent in phase space. Another common
+form of the Louville equation given in terms of the Hamiltonian is,
+\begin{equation*}
+	\frac{\partial f}{\partial t} = -
+	\sum_{i=1}^{l}{\left(\frac{\partial\H}{\partial p_{j}} \frac{\partial
+		f}{\partial q_{j}} - \frac{\partial\H}{\partial q_{j}} \frac{\partial
+		f}{\partial p_{j}}\right)}.
+\end{equation*}
+The last form just follows from the definition of the partials of the
+Hamiltonian.
+
 \subsection{The Conservation of Extension and Incompressibility}
+By moving the previous equation to one side we get an expression equal to 0,
+\begin{equation*}
+	\frac{\partial f}{\partial t} + \sum_{i=1}^{l}{\left((\dot{p}_{1})_{p_{1}}
+	\left(\frac{\partial f}{\partial p_{1}}\right)_{p_{1}} +
+	(\dot{q}_{1})_{q_{1}} \left(\frac{\partial f}{\partial
+	q_{1}}\right)_{q_{1}}\right)} = 0.
+\end{equation*}
+We should note though as $f = f(\vec{p},\vec{q},t)$ the left hand size is the
+total derivative, that is,
+\begin{equation*}
+	\frac{\d{f}}{\d{t}} = 0.
+\end{equation*}
+To put this into words, the local environment of a phase point at any time $t$
+compared to an earlier or later time $t_{0}$ is equally dense. Another way to
+phrase this is that the phase space behaves as an incompressible fluid.
+
+Furthermore, if we take the volume element around a phase point $X$ at time
+$t_{0}$, for time $t_{0} + t$ the density of the volume element must be the
+same.  However, no point can cross the boundary of this volume because to do so
+two trajectories with different intial conditions would have to converge at the
+time $t_{0} + t$. Since each trajectory is unique in phase space, this cannot
+happen. Since both number and density of the volume element are conserved, then,
+volume must be conserved as well. This property is called \textit{conservation
+of extension in phase space}, or,
+\begin{equation*}
+	\delta \vec{p} \delta \vec{q} = \delta \vec{p}_{0} \delta \vec{q}_{0}.
+\end{equation*}
+Mathematically this can be shown by taking the Jacobian from $(\vec{p},\vec{q})$
+to $(\vec{p}_{0},\vec{q}_{0})$ and proving that is is unity. From this theorem,
+an important corollary can be drawn, namely the equivalence of different
+coordinate systems. Any two sets of coordinates and conjugate momenta that
+describe a system in phase space equally well, have equivalent volume elements.
+\begin{align*}
+	&\text{if these are two coordiante systems in phase space,}\\
+	&q_{1}, q_{2},\ldots,q_{3n},p_{1},p_{2},\ldots,p_{3n}\\
+	&Q_{1}, Q_{2},\ldots,Q_{3n},P_{1},P_{2},\ldots,P_{3n}\\
+	&\text{then,}\\
+	&\d q_{1}, \d q_{2},\ldots,\d q_{3n},\d p_{1},\d p_{2},\ldots,\d p_{3n} =
+	\d Q_{1}, \d Q_{2},\ldots,\d Q_{3n},\d P_{1},\d P_{2},\ldots,\d P_{3n}.
+\end{align*}
 
 \section{Equipartition of Energy}%
 \label{sec:eoe}
+In our previous classical analysis of the average energy contributions by
+different molecular modes of energy, the energy contribution of classical modes
+was always $kT/2$. We now show for all Hamiltonian's that can be written as 
+\begin{equation*}
+	\H = \sum_{j=1}^{m}{a_{j}p_{j}^{2}} + \sum_{j=1}^{n}{b_{j}q_{j}^{2}} +
+	\H(p_{m+1},\ldots, p_{s}, q_{n+1},\ldots,q_{s}),
+\end{equation*}
+where $a_{j}$ and $ b_{j}$ all quadratic contributions contribute $kT/2 $ to the
+energy.
+
+First we note that for the separable Hamiltonian, the partition function is also
+separable,
+\begin{align*}
+	q &= \frac{1}{h^{s}}\nint e^{-\beta(\sum_{j=1}^{m}{\H_{p_{j}}} +
+	\sum_{j=1}^{n}{\H_{q_{j}}} + \H_{else})}\\
+	  &= \frac{1}{h^{s}}\prod_{j=1}^{m}{%
+		  \int{p_{j}}{e^{-\beta \H_{p_{j}}\d{p_{j}}}}%
+	  }
+		  \prod_{j=1}^{n}{\int_{q_{j}}{e^{-\beta H_{q_{j}}}\d{q_{j}}}}
+		  \nint{e^{-\beta \H_{else}} \d{q_{n+1}} \ldots \d{q_{s}} \d{p_{m+1}}
+		  \ldots \d{p_{s}}}\\
+	  &= \prod_{j=1}^{n}{q_{q_{j}}} \prod_{j=1}^{m}{q_{p_{j}}} \cdot q_{else}.
+\end{align*}
+Thus, for a particular energy mode in the conjugate momenta $p_{i}~~ 0 < i \le
+m$, the average energy in that mode is
+\begin{align*}
+	\langle \H_{i} \rangle &= \frac{\nint{\H_{i}e^{-\beta\H}}}{q}\\
+						   &= \frac{%
+							   \prod_{j=1}^{n}{q_{q_{j}}}%
+							   \prod_{j=1,~j \ne i}^{m}{q_{p_{j}}}%
+							   \cdot q_{else}
+						   \int{\H_{i}e^{-\beta\H_{i}}\d{p_{i}}}}
+						   {\prod_{j=1}^{n}{q_{q_{j}}}%
+							\prod_{j=1}^{m}{q_{p_{j}}}%
+					\cdot q_{else}}\\
+						   &= \frac{\int{\H_{i}e^{-\beta\H_{i}}\d{p_{i}}}}
+						   {q_{p_{i}}}.
+\end{align*}
+From here we can use integration by parts to determine $\langle \H_{i} \rangle$,
+\begin{align*}
+	\langle \H_{i} \rangle &= \frac{1}{q_{p_{i}}} \int{a_{j}p_{j}^{2} e^{-\beta
+	\H_{i}}}\\
+			\text{Let, } &u = -\frac{p_{i} kT}{2} \qquad \d{u} =
+			\frac{kT}{2}\d{p_{i}}\\
+						 &\d{v} = -\frac{-a_{j}p_{j}}{kT}e^{-\beta
+						 p_{j}^{2}/kT}\d{p_{j}} \qquad
+						 v = e^{-a_{j}p_{j}^{2}/kT}\\
+						 &= \frac{1}{q_{p_{i}}} \left(
+							 \left[-\frac{p_{i} kT}{2} e^{-a_{j}p_{j}^{2}/kT}
+							 \right]_{\alpha}^{\delta} +
+							 \frac{kT}{2} \int_{\alpha}^{\delta}{%
+						 e^{-a_{j}p_{j}^{2}/kT}\d{p_{i}}}\right).
+\end{align*}
+An important aside for momentum $[\alpha, \delta)$ represent $[0,\infty)$, but
+for coordinates can vary but some notable examples are  $[0, L]$ or  $[-L/2,
+L/2]$ where  $L$ is the length of that dimension. In other words, either $q_{j}
+= 0$ or $\H_{j}\to\infty$ at the two limits of integration. The second is due to
+the potential at the wall being infinite. Therefore, in both cases of momentum
+and position, the limits of integration make the first term above zero. Then it
+is easy to see,
+\begin{align*}
+		\langle \H_{i} \rangle &= \frac{1}{q_{p_{i}}} \left(
+						\frac{kT}{2} \int_{\alpha}^{\delta}{%
+						e^{-a_{j}p_{j}^{2}/kT}\d{p_{i}}}\right)\\
+							   &= \frac{kTq_{p_{i}}}{2q_{p_{i}}}\\
+							   &= \frac{kT}{2}.
+\end{align*}
+This result also holds when $a_{j}$ or $b_{j}$ is a function of a different
+variable.
