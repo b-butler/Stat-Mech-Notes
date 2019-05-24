@@ -11,8 +11,8 @@ approximation is necessary. In doing so we wish to arrive at a description of
 the electronic potential in as a function of a currently unknown number of
 variables. To fully describe a polyatomic molecule's position $3n$ coordinates
 are needed, where $n$ is the number of atoms in the molecule. 3 coordinates can
-describe the center of mass of the particle. 2 $(\theta \text{ and }\phi)$ or 3
-$(\theta,~\phi,\text{ and }\psi)$ coordinates uniquely specify the rotation of a
+describe the center of mass of the particle. 2 $(\theta~\text{and}~\phi)$ or 3
+$(\theta,~\phi,~\text{and}~\psi)$ coordinates uniquely specify the rotation of a
 rigid linear and non-linear body respectively. This leaves $3n - 5$ or $3n - 6$
 degrees of freedom internal to the molecule. Thus, the internal motion of the
 molecule occurs in a potential energy landscape of $3n - 5$ or $3n - 6$
@@ -81,7 +81,7 @@ Fig~\ref{fig:polyco2}.
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.8\linewidth]{co2.png}
-	\caption{$CO_2$ normal coordinate analysis}
+	\caption{$CO_2$ normal coordinate analysis}%
 	\label{fig:polyco2}
 \end{figure}
 With the normal coordinates then, the partition function is
@@ -107,10 +107,10 @@ symmetries. A theorem of rigid body motion which is the mode of energy in
 consideration here, is always definable on 3 orthogonal principle axis where the
 inertia tensor becomes diagonal. Each entry in the tensor is defined by
 \begin{equation*}
-	I_{ij} = \sum_{l=1}^{n}{m_l (x_{l,i} - x_{i,cm})(x_{l,j} - x_{j,cm}).
+	I_{ij} = \sum_{l=1}^{n}{m_l (x_{l,i} - x_{i,cm})(x_{l,j} - x_{j,cm})}.
 \end{equation*}
 So the theorem states there are orthogonal coordinate axes that make $I_{ij} =
-0 ~ \text{for} ~ i \ne j$.
+0~\text{for}~i \ne j$.
 \begin{equation*}
 	\left[\begin{array}{c c c}
 		I_{xx} & 0 & 0\\
@@ -192,7 +192,7 @@ least a symmetric top. The energy levels are
 	{\left[\frac{1}{I_c} - \frac{1}{I_{a}}\right]}
 	\right)}\\
 	J &= 0,1,2,\ldots
-	~ \text{and} ~ K = J, J-1, \ldots, -J\\
+	~\text{and}~K = J, J-1, \ldots, -J\\
 	\text{with degeneracy}\\
 	\omega_{JK} &= (2J+1).
 \end{align*}
@@ -283,6 +283,21 @@ Here I copy some general thermodynamic relations,
 		\frac{e^{\Theta_{\nuj}/T}}{e^{\Theta_{\nuj}/T} - 1}\right)}\\
 	\frac{S}{Nk} &= \ln{\left[\frac{2\pi MkT}{h^{2}}\right]}^{3/2}
 	\frac{Ve^{5/2}}{N} + \ln{\left[\frac{\pi^{1/2} e^{3/2}}{\sigma}
-	{\left(\frac{T^3}{\Theta_A \Theta_B \Theta_{C}}\right)}^{1/2}\right]}
-	+
+	{\left(\frac{T^3}{\Theta_A \Theta_B \Theta_{C}}\right)}^{1/2}\right]}\\
+	&+ \sum_{j=1}^{3n-6}{\left({\left(\frac{\Theta_{\nu_j}/T}%
+	{e^{\Theta_{\nu_j}/T} - 1}\right)} - \ln{(1 -
+	e^{-\Theta_{\nu_{j}/T}})}\right)} + \ln{\omega_{e1}}\\
+	pV &= kNT.
 \end{align*}
+Notice that despite the more complicated molecular nature of polyatomic
+molecules, the ideal gas law still ``pops'' out. This is because the ideal gas
+law is a consequence of non interacting molecules or equivalently low density
+systems not the features of the particles themselves. The other properties are
+easily found from thermodynamic relationship that have been used previously.
+
+Using these equations, entropy can be calculated more accurately than some
+experiments. However, discrepancies can exist. For instance, carbon monoxide has
+too weak a dipole moment to enforce the most energetically favorable arrangement
+at low temperatures, so the molecules lack the kinetic energy to rearrange but
+also are in a non-optimal arrangement. This kind of behavior is termed
+\textit{residual} entropy.
