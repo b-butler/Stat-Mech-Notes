@@ -2,7 +2,12 @@ Like other properties such as pressure, temperature, and free energy can be
 calculated from the partition function of a system, chemical equilibrium can be
 derived from them as well.
 
-\section{Chemical Equilibruim in Terms of Partition Functions}%
+\textit{Note: }that examples present in the book will not be reproduced because
+they are straight forward and just involve using the equations from
+Section~\ref{sec:chemeqetpf} and those of the partition functions of different
+molecule types as previously derived.
+
+\section{Chemical Equilibrium in Terms of Partition Functions}%
 \label{sec:chemeqetpf}
 We first note that chemical equilibrium in a reaction or phase change occurs
 when,
@@ -14,14 +19,14 @@ between the two phases. This holds for multiple reactions and multiphase
 behavior as well. One can also derive the necessary relations from a free energy
 argument. Take an arbitrary homogeneous gas reaction,
 \begin{equation*}
-	\nu_A A + \nu_B B \kdf \nu_C C + \nu_D D.
+	\nu_A A + \nu_B B \leftrightarrow \nu_C C + \nu_D D.
 \end{equation*}
 We assume that the reaction is at equilibrium in a rigid thermostatted
 container. By definition of the canonical ensemble this means that the Helmholtz
 free energy is at a minimum. By the conservation of mass and the definition of
 equilibrium we know
 \begin{equation*}
-	\nu_C C + \nu_D D - \\nu_A A + \nu_B B = 0.
+	\nu_C C + \nu_D D - \\nu_A A - \nu_B B = 0.
 \end{equation*}
 Taking the definition of the Helmholtz free energy as,
 \begin{equation*}
@@ -32,30 +37,107 @@ and using the fact that we are at constant $T$ and $V$, we get
 	\d{A} = \sum_{j}{\mu_j \d{N_{j}}} = {\left(\sum_{j}{\nu_j
 	\mu_{j}}\right)}\d{\lambda},
 \end{equation*}
-where $\nu_j \d{\lambda} = \d{N_{j}}$. Since at equilibrium we are at a minimum
-with respect to $A$, we know that $\partial A/ \partial \lambda$ must be zero,
-and
+where $\sigma_j \nu_j \d{\lambda} = \d{N_{j}}$ with $\sigma_j$ being $1$
+for products and $-1$ for reactants. Since at equilibrium we are at a
+minimum with respect to $A$, we know that $\partial A/ \partial \lambda$ must be
+zero, and
 \begin{equation*}
-	\sum_{j}{\nu_j \mu_j} = 0.
+	\sum_{j}{\sigma_j \nu_j \mu_j} = 0.
 \end{equation*}
 Now to put statistical mechanics back into it we need an expression for the
-partition function for the multicomponent system.  if the systems is an ideal
+partition function for the multicomponent system.  If the systems is an ideal
 gas, the partition function of the system is just the multiplication of the
 \begin{align*}
-	Q_{tot} &= Q_{N_{A}} Q_{N_B} Q_{N_C} Q_{N_{D}}\\
+	\Q_{tot} &= \Q_{N_{A}} \Q_{N_B} \Q_{N_C} \Q_{N_{D}}\\
 			&= \frac{q_{A}^{N_A}}{N_A !} \frac{q_{B}^{N_B}}{N_B !}
 			   \frac{q_{C}^{N_C}}{N_C !} \frac{q_{D}^{N_D}}{N_D !}.
 \end{align*}
 Using the previously derived relation,
 \begin{align*}
-	\mu_A &= -kT {\left( \frac{\partial \ln{\Q}}{\partial N_{A}}\right}_{N_j, V,
-			T} = -kT {\left( \ln{\left(\frac{q_{A}}{N_A !}\right)} /
-			\partial N_A \right}\\
-		  &= -kT(N_{A} \ln{q_{A}} - N_{A}\ln{N_{A}} + N_{A}) / \partial N_A
+	\mu_A &= -kT {\left(\frac{\partial \ln{\Q}}{\partial N_{A}}\right)}_{N_j, V,
+			T} = -kT {\left(\partial \ln{\left(\sum_{i}^{A, B, C, D}
+		{\frac{q_{i}}{N_i !}}\right)} /
+		\partial N_A \right)}
+			 = -kT {\left(\partial \ln{\left(\frac{q_{A}}{N_A !}\right)} /
+		\partial N_A \right)}\\
+		  &= -kT \partial(N_{A} \ln{q_{A}} - N_{A}\ln{N_{A}} + N_{A}) / \partial N_A
 		  = -kT {\left( N_A \ln{\left[\frac{q_A}{N_{A}}\right]} + N_A \right)} /
 		  \partial N_A \\
 		  &= -kT {\left( \ln{\left[ \frac{q_A}{N_A} \right]} - 1 + 1 \right)}\\
 		  &= -kT \ln{\left[ \frac{q_A}{N_A} \right]}.
 \end{align*}
-The second to last line uses the product rule.
+The second to last line uses the product rule. This results states that the
+chemical potential of species A is only dependent on species A which is what one
+expects for an ideal gas. We know that
+\begin{align*}
+	\sigma_j \nu_j \mu_j &= -kT \sigma_j \nu_j \ln{\left[ \frac{q_j}{N_j}
+	\right]} = \ln{\left[ \frac{q_j}{N_j} \right]}^{\sigma_j \nu_{j}}\\  
+	\sum_{j}{ \sigma_j \nu_j \mu_j} &= \nu_D \mu_D + \nu_C \mu_C - \nu_A \mu_A -
+	\nu_B \mu_B =0 \\
+		&= \sum_{j}{\sigma_j \nu_j \ln{\left[ \frac{q_j}{N_j} \right]}}
+		= \sum_{j}{\ln{\left[ \frac{q_j}{N_j} \right]}^{\sigma_j \nu_{j}}}\\
+		&= \ln{\left[ {\left(\frac{q_D}{N_{D}}\right)}^{\nu_D}
+		{\left(\frac{q_C}{N_{C}}\right)}^{\nu_C}
+		{\left(\frac{N_B}{q_{B}\right)}}^{\nu_B}
+		{\left(\frac{N_A}{q_{A}}\right)}^{\nu_A} \right]} = 0\\
+		&= \ln{\left[
+			\frac{q_{D}^{\nu_D}q_{C}^{\nu_C}}{q_{B}^{\nu_B}q_{A}^{\nu_A}}
+			\right]} +
+			\ln{\left[
+			\frac{N_{B}^{\nu_B}N_{A}^{\nu_A}}{N_{D}^{\nu_D}N_{C}^{\nu_C}}
+			\right]} = 
+			\ln{\left[
+			\frac{q_{D}^{\nu_D}q_{C}^{\nu_C}}{q_{B}^{\nu_B}q_{A}^{\nu_A}}
+			\right]} -
+			\ln{\left[
+			\frac{N_{D}^{\nu_D}N_{C}^{\nu_C}}{N_{B}^{\nu_B}N_{A}^{\nu_A}}
+			\right]} = 0 \\
+	\frac{q_{D}^{\nu_D}q_{C}^{\nu_C}}{q_{B}^{\nu_B}q_{A}^{\nu_A}} &= 
+		\frac{N_{D}^{\nu_D}N_{C}^{\nu_C}}{N_{B}^{\nu_B}N_{A}^{\nu_A}} 
+\end{align*}
+For an ideal gas, the partition function is of the form $f(T) V$. Thus, a purely
+temperature dependent equilibrium constant $K_c (T)$ can be defined as
+\begin{equation*}
+	K_c (T) = \frac{\rho_{D}^{\nu_D}\rho_{C}^{\nu_C}}
+	{\rho_{B}^{\nu_B}\rho_{A}^{\nu_A}} =
+	\frac{{(q_{D}/V)}^{\nu_D}{(q_{C}/V)}^{\nu_C}}
+	{{(q_{B}/V)}^{\nu_B}{(q_{A}/V)}^{\nu_A}}.
+\end{equation*}
+The ideal gas law $p_j = \rho_j kT$can be used to derive an expression for a pressure based
+equilibrium constant $K_p (T)$,
+\begin{equation*}
+	K_p(T) = \frac{p_{D}^{\nu_D}p_{C}^{\nu_C}}{p_{B}^{\nu_B}p_{A}^{\nu_A}} =
+	(kT)^{\sum_{j}{\nu_{j}}} K_c (T).
+\end{equation*}
+
+\section{Thermodynamic Tables}%
+\label{sec:chemeqtt}
+Tables of experimentally determined thermodynamic properties exist when can give
+us the desired equilibrium constants. Taking the ideal gas relation,
+\begin{equation*}
+	\mu(T,p) = \mu_0 (T) + kT\ln{p}.
+\end{equation*}
+Using the fact that $\sum_{j}{\nu_j \mu_j} = 0$, we have
+\begin{align*}
+	\sum_{j}{\sigma_j \nu_j kT\ln{p_{j}}} + \sum_{j}{\sigma_j \nu_j
+	\mu_{0,j}(T)} &= 0\\
+	kT\ln{K_{p}} = - {\Delta \mu_{0}}.
+\end{align*}
+
+Looking once more at the expression developed for $\mu$, in terms of $q$, we can
+put $\mu$ into terms of $(T, p)$.
+\begin{align*}
+	\mu &= -kT\ln{\left[\frac{q}{N}\right]} = 
+	-kT\ln{\left[\frac{q}{V} \frac{V}{N}\right]}\\
+		&= -kT\ln{\left[\frac{q}{V} \right]} + kT\ln{[\rho]} =
+		-kT\ln{\left[\frac{q}{V} \right]} + kT\ln{\left[ \frac{p}{kT} \right]} \\
+		&= -kT\ln{\left[\frac{q}{V} kT \right]} + kT\ln{[p]} \\
+	\mu_0 (T) &= -kT\ln{\left[\frac{q}{V} kT \right]}.
+\end{align*}
+Here one should note that the logarithm in the last line has units of pressure.
+\subsection{Zero of Energy}
+One important consideration when using thermodyanmic tables is the zero of
+energy. Previously we have set the translational and rotational ground states to
+0 energy, the vibrational zero point energy to be the bottom of the potential
+well, and the electronic zero to be the energy of complete atomic separation.
 
