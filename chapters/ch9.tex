@@ -1,0 +1,61 @@
+Like other properties such as pressure, temperature, and free energy can be
+calculated from the partition function of a system, chemical equilibrium can be
+derived from them as well.
+
+\section{Chemical Equilibruim in Terms of Partition Functions}%
+\label{sec:chemeqetpf}
+We first note that chemical equilibrium in a reaction or phase change occurs
+when,
+\begin{equation*}
+	\mu_I = \mu_{II},
+\end{equation*}
+or when chemical potentials are equal between the products and reactants or
+between the two phases. This holds for multiple reactions and multiphase
+behavior as well. One can also derive the necessary relations from a free energy
+argument. Take an arbitrary homogeneous gas reaction,
+\begin{equation*}
+	\nu_A A + \nu_B B \kdf \nu_C C + \nu_D D.
+\end{equation*}
+We assume that the reaction is at equilibrium in a rigid thermostatted
+container. By definition of the canonical ensemble this means that the Helmholtz
+free energy is at a minimum. By the conservation of mass and the definition of
+equilibrium we know
+\begin{equation*}
+	\nu_C C + \nu_D D - \\nu_A A + \nu_B B = 0.
+\end{equation*}
+Taking the definition of the Helmholtz free energy as,
+\begin{equation*}
+	\d{A} = -S\d{T} - p\d{V} + \sum_{j}{\mu_j \d{N_{j}}},
+\end{equation*}
+and using the fact that we are at constant $T$ and $V$, we get
+\begin{equation*}
+	\d{A} = \sum_{j}{\mu_j \d{N_{j}}} = {\left(\sum_{j}{\nu_j
+	\mu_{j}}\right)}\d{\lambda},
+\end{equation*}
+where $\nu_j \d{\lambda} = \d{N_{j}}$. Since at equilibrium we are at a minimum
+with respect to $A$, we know that $\partial A/ \partial \lambda$ must be zero,
+and
+\begin{equation*}
+	\sum_{j}{\nu_j \mu_j} = 0.
+\end{equation*}
+Now to put statistical mechanics back into it we need an expression for the
+partition function for the multicomponent system.  if the systems is an ideal
+gas, the partition function of the system is just the multiplication of the
+\begin{align*}
+	Q_{tot} &= Q_{N_{A}} Q_{N_B} Q_{N_C} Q_{N_{D}}\\
+			&= \frac{q_{A}^{N_A}}{N_A !} \frac{q_{B}^{N_B}}{N_B !}
+			   \frac{q_{C}^{N_C}}{N_C !} \frac{q_{D}^{N_D}}{N_D !}.
+\end{align*}
+Using the previously derived relation,
+\begin{align*}
+	\mu_A &= -kT {\left( \frac{\partial \ln{\Q}}{\partial N_{A}}\right}_{N_j, V,
+			T} = -kT {\left( \ln{\left(\frac{q_{A}}{N_A !}\right)} /
+			\partial N_A \right}\\
+		  &= -kT(N_{A} \ln{q_{A}} - N_{A}\ln{N_{A}} + N_{A}) / \partial N_A
+		  = -kT {\left( N_A \ln{\left[\frac{q_A}{N_{A}}\right]} + N_A \right)} /
+		  \partial N_A \\
+		  &= -kT {\left( \ln{\left[ \frac{q_A}{N_A} \right]} - 1 + 1 \right)}\\
+		  &= -kT \ln{\left[ \frac{q_A}{N_A} \right]}.
+\end{align*}
+The second to last line uses the product rule.
+
