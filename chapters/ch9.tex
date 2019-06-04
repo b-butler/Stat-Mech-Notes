@@ -72,13 +72,13 @@ expects for an ideal gas. We know that
 \begin{align*}
 	\sigma_j \nu_j \mu_j &= -kT \sigma_j \nu_j \ln{\left[ \frac{q_j}{N_j}
 	\right]} = \ln{\left[ \frac{q_j}{N_j} \right]}^{\sigma_j \nu_{j}}\\  
-	\sum_{j}{ \sigma_j \nu_j \mu_j} &= \nu_D \mu_D + \nu_C \mu_C - \nu_A \mu_A -
+	\sum_{j}{\sigma_j \nu_j \mu_j} &= \nu_D \mu_D + \nu_C \mu_C - \nu_A \mu_A -
 	\nu_B \mu_B =0 \\
 		&= \sum_{j}{\sigma_j \nu_j \ln{\left[ \frac{q_j}{N_j} \right]}}
 		= \sum_{j}{\ln{\left[ \frac{q_j}{N_j} \right]}^{\sigma_j \nu_{j}}}\\
 		&= \ln{\left[ {\left(\frac{q_D}{N_{D}}\right)}^{\nu_D}
 		{\left(\frac{q_C}{N_{C}}\right)}^{\nu_C}
-		{\left(\frac{N_B}{q_{B}\right)}}^{\nu_B}
+		{\left(\frac{N_B}{q_{B}}\right)}^{\nu_B}
 		{\left(\frac{N_A}{q_{A}}\right)}^{\nu_A} \right]} = 0\\
 		&= \ln{\left[
 			\frac{q_{D}^{\nu_D}q_{C}^{\nu_C}}{q_{B}^{\nu_B}q_{A}^{\nu_A}}
@@ -136,8 +136,52 @@ put $\mu$ into terms of $(T, p)$.
 \end{align*}
 Here one should note that the logarithm in the last line has units of pressure.
 \subsection{Zero of Energy}
-One important consideration when using thermodyanmic tables is the zero of
+One important consideration when using thermodynamic tables is the zero of
 energy. Previously we have set the translational and rotational ground states to
 0 energy, the vibrational zero point energy to be the bottom of the potential
 well, and the electronic zero to be the energy of complete atomic separation.
+Experimentally, the complete ground state is taken to be zero energy. This
+requires changing the electronic and vibrational partition functions from what
+we have previously derived.
 
+We first take the electronic partition function,
+\begin{equation*}
+	q_{elec} = \omega_{e1} e^{-\varepsilon_{e1}/kT} + \omega_{e2}
+	e^{-\varepsilon_{e2}/kT} + \cdots
+\end{equation*}
+Using the same convention that the zero energy is the electrically neutral
+separated atoms then,
+\begin{align*}
+	\varepsilon_{e_2} &= -D_e \\
+	\varepsilon_{e_2} &= -D_e + \Delta\varepsilon_{12} \\
+	q_{elec} &= \omega_{e1} e^{D_e/kT} + \omega_{e2}
+	e^{D_e/kT}e^{-\Delta\varepsilon_{12}/kT} + \cdots \\
+			 &= e^{D_{e}/kT} (\omega_{e_{1}} + \omega_{e_2}
+			 e^{-\Delta\varepsilon_{12}/kT} + \cdots) \\
+			 &= e^{D_e/kT} q_{elec}^0.
+\end{align*}
+By factoring out the $e^{D_{o}/kT}$, the partition function becomes a constant
+times the partition function with zero of energy the ground state as
+$\omega_{e_{1}}$ is multiplied by $1$ or $e^0$. We can similarly take the
+vibrational partition function,
+\begin{equation*}
+	q_{vib} = \prod_{j}{\frac{e^{-\Theta_{\nu_{j}}/2T}}
+	{(1 - e^{-\Theta_{\nu_{j}}/2T})}}, where \Theta_{\nu_j} = \frac{h\nu}{k}
+\end{equation*}
+and remove the part from the non-zero ground state. Here it is important to note
+from the derivation in Section~\ref{sec:diatomicvib} that the numerator comes
+from the $1 /2$ term in the energy levels which is a result of having a nonzero
+ground state. Thus,
+\begin{equation*}
+	q_{vib} = e^{-\Theta_{\nu_{j}}/2T}\prod_{j}{(1 - e^{-\Theta_{\nu_{j}}/2T})}
+	= e^{-\Theta_{\nu_{j}}/2T} q_{vib}^0.
+\end{equation*}
+
+From these two equations we can redefine the molecular partition function as,
+\begin{align*}
+	q &= q_{trans}^0 q_{rot}^0 q_{vib}^0 q_{elec}^0 e^{(D_e - 1/2
+		\sum_{j}{h\nu_{j}})/kT} = q_{trans}^0 q_{rot}^0 q_{vib}^0 q_{elec}^0
+		e^{D_o /kT}.
+\end{align*}
+The substitution to $D_o$ is graphically explained in
+Figure~\ref{fig:diatomicelectronic}.
