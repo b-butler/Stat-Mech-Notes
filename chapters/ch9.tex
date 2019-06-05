@@ -184,4 +184,30 @@ From these two equations we can redefine the molecular partition function as,
 		e^{D_o /kT}.
 \end{align*}
 The substitution to $D_o$ is graphically explained in
-Figure~\ref{fig:diatomicelectronic}.
+Figure~\ref{fig:diatomicelectronic}. From the graphical argument and the
+definition of $D_o$, $-D_{o}$ can been seen to be the total ground state energy
+from our original convention. Thus, for any zero energy convention the partition
+function is
+\begin{equation*}
+	q = q^0 e^{-\varepsilon_{0}^0 /kT}.
+\end{equation*}
+Substituting this into the equation for chemical potential we have,
+\begin{align*}
+	\mu &= -kT\ln{\left[\frac{q}{V} kT \right]} + kT\ln{[p]} \\
+		&= -kT\ln{\left[e^{-\varepsilon^0_0}\frac{q^0}{V} kT \right]} +
+		kT\ln{[p]} \\	
+	\mu - \varepsilon^0_0 &= -kT\ln{\left[\frac{q^0}{V} kT \right]} +
+	kT\ln{[p]}.
+\end{align*}
+An important fact here is that $\mu \to \varepsilon$ as $T \to 0$. If we treat
+$\mu - \varepsilon^0_0$ as the relative chemical potential, then it goes to 0 at
+$T \to 0$. Multiplying by Avogadro's number, we obtain,
+\begin{equation*}
+	G^0 - E^0_0 = -RT \ln{\left[\frac{q^0}{V} kT \right]} + kT\ln{[p]}.
+\end{equation*}
+This means that $E^0$ is the standard free energy at 0 K which means $G^0 -
+G^0_0$ is an equally appropriate choice. Likewise, since $H = E + pV$ and $p \to
+0$ as $T \to 0$, then $H^0_0 = E^0_0 $. Thus, these three notations are
+equivalent and possible.  An important comment on convention is required to use
+the derived quantities above. An elements energy is considered 0 at 0 K if the
+element is in the same physical state that is stable at $25^{\circ}$C and 1 atm.
