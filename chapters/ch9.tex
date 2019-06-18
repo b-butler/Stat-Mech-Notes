@@ -26,7 +26,7 @@ container. By definition of the canonical ensemble this means that the Helmholtz
 free energy is at a minimum. By the conservation of mass and the definition of
 equilibrium we know
 \begin{equation*}
-	\nu_C C + \nu_D D - \\nu_A A - \nu_B B = 0.
+	\nu_C C + \nu_D D - \nu_A A - \nu_B B = 0.
 \end{equation*}
 Taking the definition of the Helmholtz free energy as,
 \begin{equation*}
@@ -34,7 +34,7 @@ Taking the definition of the Helmholtz free energy as,
 \end{equation*}
 and using the fact that we are at constant $T$ and $V$, we get
 \begin{equation*}
-	\d{A} = \sum_{j}{\mu_j \d{N_{j}}} = {\left(\sum_{j}{\nu_j
+	\d{A} = \sum_{j}{\mu_j \d{N_{j}}} = {\left(\sum_{j}{\nu_j \sigma_j
 	\mu_{j}}\right)}\d{\lambda},
 \end{equation*}
 where $\sigma_j \nu_j \d{\lambda} = \d{N_{j}}$ with $\sigma_j$ being $1$
@@ -55,11 +55,12 @@ gas, the partition function of the system is just the multiplication of the
 Using the previously derived relation,
 \begin{align*}
 	\mu_A &= -kT {\left(\frac{\partial \ln{\Q}}{\partial N_{A}}\right)}_{N_j, V,
-			T} = -kT {\left(\partial \ln{\left(\sum_{i}^{A, B, C, D}
-		{\frac{q_{i}}{N_i !}}\right)} /
-		\partial N_A \right)}
+	T}
+			= -kT {\left(\partial \sum_{i}^{A, B, C, D}
+					{\ln{\left[\frac{q_{i}}{N_i !}}\right]} / \partial N_A
+			\right)}
 			 = -kT {\left(\partial \ln{\left(\frac{q_{A}}{N_A !}\right)} /
-		\partial N_A \right)}\\
+			 \partial N_A \right)}\\
 		  &= -kT \partial(N_{A} \ln{q_{A}} - N_{A}\ln{N_{A}} + N_{A}) / \partial N_A
 		  = -kT {\left( N_A \ln{\left[\frac{q_A}{N_{A}}\right]} + N_A \right)} /
 		  \partial N_A \\
@@ -107,7 +108,7 @@ The ideal gas law $p_j = \rho_j kT$can be used to derive an expression for a pre
 equilibrium constant $K_p (T)$,
 \begin{equation*}
 	K_p(T) = \frac{p_{D}^{\nu_D}p_{C}^{\nu_C}}{p_{B}^{\nu_B}p_{A}^{\nu_A}} =
-	(kT)^{\sum_{j}{\nu_{j}}} K_c (T).
+	(kT)^{\sum_{j}{\sigma_j \nu_{j}}} K_c (T).
 \end{equation*}
 
 \section{Thermodynamic Tables}%
@@ -117,7 +118,7 @@ us the desired equilibrium constants. Taking the ideal gas relation,
 \begin{equation*}
 	\mu(T,p) = \mu_0 (T) + kT\ln{p}.
 \end{equation*}
-Using the fact that $\sum_{j}{\nu_j \mu_j} = 0$, we have
+Using the fact that $\sum_{j}{\sigma_j \nu_j \mu_j} = 0$, we have
 \begin{align*}
 	\sum_{j}{\sigma_j \nu_j kT\ln{p_{j}}} + \sum_{j}{\sigma_j \nu_j
 	\mu_{0,j}(T)} &= 0\\

@@ -65,8 +65,9 @@ where $\mu_j$ and $k_j$ are effective masses and force constants for these
 normal coordinates respectively. In solving the above Hamiltonian, the total
 energy becomes,
 \begin{equation*}
-	\varepsilon = \sum_{j=1}^{\alpha}{(n_j + \frac{1}{2})h \nu_j}
-	\quad\text{for}\quad n_j = 0, 1, 2, \ldots
+	\varepsilon = \sum_{j=1}^{\alpha}{\sum_{i=0}^{\infty}{(n_{j,i} + \frac{1}{2})h
+	\nu_{j}}}
+	\quad\text{for}\quad n_{j,i} = 0, 1, 2, \ldots
 \end{equation*}
 where,
 \begin{equation*}
@@ -138,7 +139,13 @@ before
 	q_{rot} = \frac{8 \pi^2 IkT}{\sigma h^2} = \frac{T}{\sigma \Theta_r}.
 \end{equation*}
 Once again $\sigma$ is the symmetry number which represents the number of
-indistinguishable configurations a molecule has.
+indistinguishable configurations a molecule has. The purpose of $\sigma$ is
+important to mention here. Its meaning classically comes from the number of
+different equivalent arrangements of the molecule that are identical over
+specific rotations. In other words, The number of configurations of the atoms
+that make the same structure will have rotations which show them to be
+identical. This prevents their over-counting. In terms of quantum mechanics, the
+particles are indistinguishable so the symmetry number is immediately required.
 
 \subsection{Non-Linear Molecules}
 Non-linear rigid bodies have at least two different diagonal moments of
@@ -172,7 +179,7 @@ Let,
 	v = \frac{4IkT}{\hbar^2} e^{-J^2 \hbar^{2}/2IkT},
 \end{align*}
 Here, I note that the integral is directly analogous to that used to prove the
-law of equipartition derived in Section\ref{sec:eoe}. Then, the final solution
+law of equipartition derived in Section~\ref{sec:eoe}. Then, the final solution
 is
 \begin{equation*}
 	q_{rot} = \frac{1}{\sigma}
