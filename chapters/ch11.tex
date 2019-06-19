@@ -1,0 +1,424 @@
+% Crystals chapter 11
+
+\section{Degrees of Freedom in a Crystal}%
+\label{sec:crystal_dof}
+The degrees of freedom within a crystal are essentially all vibrations. To show
+this take a crystal composed of $N$ particles. Then, there are $3N$ coordinates
+that uniquely specify the crystal's configuration. Like the polyatomic molecule,
+3 coordinates can describe the center of mass for translational motion, and 3
+can describe the rotation of the crystal. Thus, $3N - 6$ describe the vibration
+of atoms around their equilibrium positions. Since at large $N$, $3N \approx 3N
+- 6$, the translational and rotational degrees of freedom can be safely ignored.
+
+\section{Derivation of the Partition Function}%
+\label{sec:crystal_dpf}
+In the crystal we assume that the potential well each particle experiences is
+steep, so that deviations from the lattice sites are small. Because deviations
+are small, a Taylor's series expansion of the potential, $U$, around a deviation
+of 0, $\zeta = 0$, can be taken.
+\begin{equation*}
+	U(\zeta_1 , \zeta_2 , \ldots, \zeta_{N}) = U(0, 0, \ldots, 0) +
+	\sum_{j=1}^{N}{{\left(\frac{\partial U}{\partial \zeta_j }\right)}_0 \zeta_j}
+	+ \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}{{\left(\frac{\partial^2
+	U}{\partial \zeta_i \partial \zeta_j }\right)}_0 \zeta_i \zeta_j } + \cdots
+\end{equation*}
+As the first derivative at a local extrema is 0, this reduces to
+\begin{align*}
+	U(\zeta_1 , \zeta_2 , \ldots, \zeta_{N}) &\approx U(0, 0, \ldots, 0) +
+	\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}{{\left(\frac{\partial^2
+	U}{\partial \zeta_i \partial \zeta_j }\right)}_0 \zeta_i \zeta_j }\\
+	&\approx U(0, 0, \ldots, 0) + \frac{1}{2} \sum_{i,j}^{N}{k_{ij} \zeta_i
+	\zeta_{j}},
+\end{align*}
+where $k_{ij}$ is the force constant for all pairs of particles. We can see then
+that $U(\vec{\zeta})$ is a quadratic function. In addition, $U(\vec{0})$
+is not a function of displacement, but is a function of density. This occurs
+because the interatomic potential changes when the lattice spacing changes. One
+way to show this is by writing $U(\vec{0})$ as $U(\vec{0}; \rho)$. This system
+of equations is coupled, meaning the  $i$-th and $j$-th terms are inseparable.
+However, just like the polyatomic case, the vibrational modes can be separated
+using normal coordinate analysis into $3N - 6$ independent harmonic oscillators.
+Taking the equation from Chapter~\ref{ch7}, 
+\begin{equation*}
+	\nu_j = \frac{1}{2\pi} {\left( \frac{k_j }{\mu_j }\right)}^{1/2}, 
+\end{equation*}
+we can generate a partition function ignoring the fact we do not know $k$ or
+$\mu$.
+\begin{equation*}
+	\Q(V/N, T) = e^{-U(\vec{0}; \rho)/kT} \prod_{j=1}^{3N - 6}{q_{vib, j}}
+\end{equation*}
+Q is a function of the inverse of density because $k_{j}$ is related to $k_{ij}$
+from the Taylor expansion, and the potential depends on the lattice spacing as
+does $U(\vec{0}; \rho)$. We have ignored the translational and rotational
+contribution since these are nearly meaningless in this case. Since the
+particles are restricted to a specific lattice site, the particles are in fact
+distinguishable and no factor of $\frac{1}{N!}$ needs to be introduced. $\Q$ can
+also be expanded as so,
+\begin{equation*}
+	\Q = \prod_{j=1}^{3N}{{\left(\frac{e^{-h\nu_{j}/2kT}}{1 -
+	e^{-h\nu_{j}/kT}}\right)}e^{-U(\vec{0}; \rho)/kT}}.
+\end{equation*}
+Taking the natural log,
+\begin{equation*}
+	\ln{\Q} = - \frac{-U(\vec{0}; \rho)}{kT} +
+	\sum{j=1}^{3N}{{\left(\frac{-h\nu_{j}}{2kT} - \ln{1 -
+	e^{-h\nu_{j}/kT}}\right)}}.
+\end{equation*}
+As $3N$ is large, the distribution of frequencies can be taken to be continuous.
+That means the summation can be substituted for an integral with a density of
+frequencies term added to ensure a correct weighting of frequencies.
+\begin{align*}
+	\ln{\Q} &= - \frac{-U(\vec{0}; \rho)}{kT} +
+	\int_{0}^{\infty}{{\left(\frac{-h\nu}{2kT} - \ln{1 -
+	e^{-h\nu/kT}}\right)} \cdot g(\nu) \d{\nu}}\\
+	\int_{0}^{\infty}{g(\nu)\d{\nu}} = 3N.
+\end{align*}
+Thus if $g(\nu)$ is known, all thermodynamic properties of the crystal can be
+calculated. The specific heat formula is given to compare the Einstein, Debye,
+and phonon methods of looking at crystals,
+\begin{equation*}
+	C_v = k \int_{0}^{\inft}{\frac{(h\nu /kT)^2 e^{-h\nu/kT} g(\nu) \d{\nu}{(1 -
+		e^{-h\nu/kT})^2}}.
+\end{equation*}
+
+\section{Einstein Crystal}%
+\label{sec:crystal_ein}
+The Einstein model of crystals assumes that all particles vibrate independently
+from each other and have identical local environments. This means they all
+vibrate at the same frequency $\nu$. Classically this would just lead to a
+constant heat capacity of $3Nk = 3R = 6 cal/deg \cdot mole$. In fact, this
+relation is known as the law of Dulong and Petit and comes from the law of
+equipartition which states that each quadratic degree of freedom contributes $k
+cal/deg \cdot mole$ per atom. However, the D\&P law only holds asymptotically at
+sufficiently high temperatures. At lower temperatures $C_v$ drops as $T^3$.
+What, Einstein did that was novel and provided an advance was to quantized the
+vibrational modes first which is of course correct since all energy is
+quantized. 
+
+For an Einstein crystal $g(\nu)$ is given by $3N \delta(\nu - \nu_{E})$, where
+$\nu_E$ is the Einstein frequency of a crystal. The integral of the delta
+function is just the remainder of the integrand evaluated at $\nu_E$. Then, 
+ \begin{equation*}
+	 \ln{\Q} = - \frac{-U(\vec{0}; \rho)}{kT} + {\left(\frac{-h\nu_E}{2kT} -
+			 \ln{1 - e^{-h\nu_E/kT}}\right)},
+\end{equation*}
+
+and the specific heat is,
+\begin{align*}
+	C_v &= 3Nk {\left(\frac{h\nu_{E}}{kT}\right)}^2 \frac{e^{-h\nu_{E}/kT}}{(1 -
+	e^{-h\nu_E/kT})^2} \\
+		&= 3Nk {\left(\frac{\Theta_E}{T}\right)}^2 \frac{e^{-\Theta_E /T}}{(1 -
+		e^{-\Theta_E /T})^2}.
+\end{align*}
+In the last equation, $\Theta_E = h\nu_E / k$ and is known as the Einstein
+temperature.
+
+While Einstein's theory provided must further understanding about crystal
+behavior, it incorrectly predicts the low temperature behavior. The low
+temperature limit is,
+\begin{equation*}
+	C_v \to 3Nk {\left(\frac{\Theta_{E}}{T}\right)}^2 e^{-\Theta_E /T}.
+\end{equation*}
+
+\section{Debye Crystal}%
+\label{sec:crystal_debye}
+The Debye view of a crystal assumes the entire crystal behaves as an elastic
+continuous body. This assumption allows for accurate treatment of the low
+frequency, large wavelength regime of a crystal's normal frequencies. In the
+limit of infinitely long wavelength's this approximation is exact. To analyze
+the frequencies then we must define the wave travelling through the continuum
+crystal. A wave function can be written as
+ \begin{equation*}
+	 u(r, t) = A e^{i(\vec{k} \cdot \vec{r} - \omega t)},
+\end{equation*}
+with wave vector $ \vec{k}$ of magnitude \frac{$2\pi}{\lambda}$ and frequency
+$\omega = 2\pi\nu$. The wave vector defines a direction and the frequency
+defines how quickly the phase changes. By adding another wave in direction $-k$,
+we can form a standing wave,
+\begin{align*}
+	u &= A( e^{i(\vec{k} \vec{r} - \omega t)} + e^{i(-\vec{k} \vec{r} - \omega
+	t)})\\
+	  &= 2A e^{i \vec{k} \vec{r}} \cos{\omega t}.
+\end{align*}
+We need the imaginary component to vanish at the crstal edges to ensure the wave
+is standing. This can be accomplished by setting $k_{xi} L_{xi} = n_{xi} \pi$,
+or,
+\begin{equation*}
+	\vec{k} = \frac{\pi}{L} \vec{n}.
+\end{equation*}
+This just ensures that in every direction the vibration of the endpoints of the
+crystal go to zero. The magnitude of k is given by
+\begin{equation*}
+	|\vec{k}| = {\left[{\left(\frac{\pi}{L}\right)}(n_{x}^2 + n_{y}^2 +
+	n_{z})^2\right]}^{1/2}.
+\end{equation*}
+Frequency is just $\nu = \omega / |\vec{k}|$. The density of wave numbers can be
+taken in the same manner as the density of translational states of a molecule,
+so
+\begin{align*}
+	R^2 &= {\left(\frac{kL}{\pi}\right)}^2 = (n_{x}^2 + n_{y}^2 + n_{z})^2\\
+	\phi(k) &= \frac{1}{8} \frac{4}{3} \pi R^3 = \frac{\pi}{6}
+	{\left(\frac{kL}{\pi}\right)}^3 = \frac{k^3 L^3}{6 \pi^2}.
+\end{align*}
+The method here takes the volume of one octant of a sphere of radius $R$. The
+density between $k$ and $k +\d{k}$ is then,
+\begin{equation*}
+	\delta(k) \d{k} = \frac{\d{\phi}}{\d{k}} \d{k} = \frac{L^3 k^2 \d{k}}{2
+	\pi^2}.
+\end{equation*}
+Using $\nu = \upsilon / \lambda$ where $\upsilon$ is the velocity of
+propagation, and $\nu = \upsilon k /2\pi$ we have,
+\begin{equation*}
+	g(\nu) \d{\nu} = \frac{4\pi L^3 \nu^2}{\upsilon^3} \d{\nu}.
+\end{equation*}
+
+For every magnitude of $\vec{k}$, we can create two linearly independent
+transversal waves and one longitudinal wave. The speed of propagation for these
+two types of waves can be different and must be averaged. The final result is
+then,
+\begin{align*}
+	g(\nu) \d{\nu} &= 4\pi L^3 \nu^2 {\left(\frac{2}{\upsilon_t^3} +
+	\frac{1}{\upsilon_{l}^3}\right)} \d{\nu}\\
+				   &= \frac{12\pi L^3 \nu^2}{\upsilon_{0}^3}.
+\end{align*}
+In the last line $\upsilon_0$ represents the effective velocity of propagation
+in the medium. To ensure the proper nomralization of $g(\nu)$ a frequency
+$\nu_D$ is defined, called the Debye frequency, such that
+\begin{equation*}
+	\int_{0}^{\nu_D}{g(\nu)\d{\nu}} = 3N.
+\end{equation*}
+In terms of other quantities this makes $\nu_{D}$,
+\begin{equation*}
+	\nu_D = {\left(\frac{3N}{4\pi L^3}\right)}^{1/3} \upsilon_0.
+\end{equation*}
+Specific heat in the theory is then,
+\begin{align*}
+	C_v &= 9Nk{\left(\frac{T}{\Theta_{D}}\right)}^3 \int_{0}^{\Theta_D
+	/T}{\frac{x^4 e^x}{(e^{x} - 1)^2} \d{x}}\\
+		\Theta_D &= \frac{h \nu_D}{k}.
+\end{align*}
+
+\subsubsection{Correspondence of States}
+We should note that in both the case for Einstein's and Debye's theories that
+heat capacity ends up being a function of temperature ratioed with some material
+specific constant. This means that if the curves for heat capacity is normalized
+with respect to $\Theta_{D}$ or $ \Theta_E$then all the curves are identical.
+This implies that the behavior of all crystals once normalized is identical. The
+general name for a result like this is the \textit{theory of corresponding
+states}. The theory is true for all phases of matter not just crystals that are
+guided by the same driving forces.
+
+At low temperatures $(\Theta_D / T) \to \infty$, and the integral converges to
+$4\pi^4 / 15$. The low temperature limit in Debye theory is then,
+\begin{equation*}
+	C_v = \frac{12\pi^4}{5} Nk {\left(\frac{T}{\Theta_{D}}\right)}^3.
+\end{equation*}
+This is the famous $T^3$-law that was experimentally seen for crystals at low
+temperatures.
+
+It bears saying that though Debye's theory has the correct limits; it is still
+approximate and $\Theta_D$ which should be constant across $T$ often varies as a
+function of $T$. Furthermore, since Debye theory is a continuum theory the
+spectra of diatomic crystals is not readily explained by it. Another interesting
+point is that the thermodynamic properties of crystals can be estimated from
+their mechanical, i.e. elastic, properties.
+
+\section{The Phonon Gas Model}%
+\label{sec:crystal_phonon}
+Yet another way to derive the properties of a crystal is to treat it as an ideal
+gas of phonons. To derive what a phonon is we first reconsider the energy of a
+crystal in terms of its normal coordinates,
+\begin{align*}
+	E_{cryst} &= \sum_{j=1}^{3N}{h\nu_j (n_j + \frac{1}{2}})\\
+			  &= \sum_{j=1}^{3N}{h\nu_j n_j} +
+			  \sum_{j=1}^{3N}{\frac{h\nu_j}{2}}\\
+	E_{cryst}(\{n_{j}\}) &= \sum_{j=1}^{3N}{h\nu_j n_j} + E_0.
+\end{align*}
+The last line explicitly shows that the energy is a function of the ``occupancy
+number'' of the particular mode of energy. We should note that the occupancy
+number of a particle mode is not restricted, and, equally important, the sum over
+occupancy numbers is not conserved. In this formulation, each of the $3N$
+vibrational modes is a phonon which acts as an ideal gas of bosons. The choice
+of treating phonons as bosons comes from the fact that phonons do not have
+occupancy restrictions.
+
+We can mathematically write down the expected occupancy of a phonon using
+Bose-Einstein statistics,
+\begin{equation*}
+	\overline{n}_j = \frac{1}{\lambda^{-1} e^{\beta \varepsilon_{j}} - 1}.
+\end{equation*}
+However, we do not immediately know $\lambda$. We do know that the number is not
+conserved. This requires that $\mu=0$ or $\lambda=1$ in these cases.
+Thermodynamically, however, the requirement must be $\mu = 0$. If we treat the
+transition of occupancy number as a reaction, following
+from the notes on chemical equilibrium for the ``reaction'' $nA \leftrightarrow
+mA$ $n \ne m$, $(m-n)\mu = 0$, and $\mu=0$ and $\lambda = 1$. Thus,
+\begin{equation*}
+	\overline{n}_j = \frac{1}{e^{\beta \varepsilon_{j}} - 1}.
+\end{equation*}
+The average energy is then,
+ \begin{equation*}
+	 \overline{E} = \sum_{j=1}^{3N}{\frac{h\nu_j n_j}{e^{\beta \varepsilon_{j}}
+	 - 1}} + E_0.
+\end{equation*}
+Using the function $g(\nu)$ as before,
+\begin{equation*}
+	\overline{E} = E_0 + \int_{0}^{\infty}{\frac{g(\nu)h\nu}{e^{\beta
+		h\nu} - 1} \d{\nu}.
+\end{equation*}
+This equation is equivalent to the previous treatment in the beginning of this
+chapter. Thus a fully examination of the statistical mechanics of crystal can be
+done from the perspective of phonons. Phonons also have useful quirks. Since
+they are pseudo-particles, phonons can have momentum and the transfer between
+phonons can be examined. This transfer is also the cause for electrical
+resistance in metals. In addition, the interaction of phonons with photons
+can be studied and is the basis of Brillouin scattering and many crystal
+observed optical effects.
+
+\section{Lattice Dynamics}%
+\label{sec:crystals_ld}
+Lattice dynamics seek to exactly determine the vibrational frequencies of a
+lattice. To examine this technique two 1 dimensional lattices will be examine
+the monoatomic and diatomic cases.
+
+\subsection{Monotonic 1D Crystal}
+The Hamiltonian following from the beginning of this chapter is
+\begin{equation*}
+	\H = \sum_{j=1}^{N}{\frac{m}{2}\zeta_{j}^2} +  \sum_{j=2}^{N}{\frac{f}{2}
+	{(\zeta_j - \zeta_{j-1})}^2} = K + U,
+\end{equation*}
+where $f$ are the force constants. The equations of motion for this system is
+\begin{equation*}
+	m\ddot{\zeta}_j = f(\zeta_{j+1} + \zeta_{j-1} - 2\zeta_{j}).
+\end{equation*}
+This is simple stating that $ma = F$. We can further assume since the
+oscillation is harmonic that
+\begin{equation*}
+	\zeta_j (t) = e^{i\omega t} y_j,
+\end{equation*}
+where $y_j$ represents the spacial component of the oscillation. This allows
+for a simplification of the equations of motion to,
+\begin{equation*}
+	-m \omega^2 y_j = f(y_{j+1} + y_{j-1} - 2y_{j}).
+\end{equation*}
+This difference equation, which mimics differential equations, is of the form
+$e^{i\phi}$. Then,
+\begin{align*}
+	-m \omega^2 &= f(e^{1i \phi} + e^{-1i \phi} - 2 e^{0i \phi})\\
+				&= f(2 \cos{\phi} - 2).
+\end{align*}
+Using the relation $\sin^2 \theta + \cos^2 \theta = 1 $,
+\begin{equation*}
+	\omega^2 = \frac{4f}{m} \sin^2{\frac{\phi}{2}}.
+\end{equation*}
+Because $\zeta$ is harmonic it repeats every $\Delta = 2\pi / \phi$. This
+implies that $\lambda = 2\pi a / \phi$ where $a$ is the lattice spacing. Thus,
+$\phi = 2\pi a / \lambda = ka$. Taking this all together we can get the
+dispersion function which shows how different waves travel at different
+velocities in a crystal.
+\begin{align*}
+	\omega^2 &= \frac{4f}{m} \sin^2{\frac{\phi}{2}}\\
+	\omega &= {\left(\frac{4f}{m}\right)}^{1/2} | \sin{\frac{\phi}{2}} |
+	= \omega_{max} | \sin{\frac{\phi}{2}} |\\
+		   &= \omega_{max} | \sin{\frac{ka}{2}} |\\
+	\lambda \nu &= \frac{\omega_{max}}{k}| \sin{\frac{ka}{2}} | = c(k).
+\end{align*}
+Note that $\omega_{max}$ is the maximum frequency in the crystal. As $\lambda
+\nu$ is usually not constant, different waves travel at different speeds in
+crystals.
+
+To solve the equations of motion, we must place another constraint on the
+system. A common constraint is periodic boundary conditions. When solving for
+the energy of the system, the result is
+ \begin{equation*}
+	 E = \sum_{j}{\frac{\hbar \omega_j}{e^{\beta \hbar \omega_{j}} -1}} = 
+	 \frac{Na}{\pi} \int_{0}^{\pi / a}{\frac{\hbar \omega(k)}{e^{\beta \hbar
+	 \omega(k)} -1} \d{k}}.
+\end{equation*}
+The bounds on the integral are from the fact that $\omega(k) = \omega(|k|)$.
+Using chain rule we can eliminate $k$,
+\begin{align*}
+	\d{k} &= \frac{\d{k}}{\d{\omega}} \d{\omega} = \frac{\d}{\d{\omega} {\left[
+				\frac{2}{a}
+		\sin^{-1}{\left(\frac{\omega}{\omega_{max}}\right)}\right]}\d{\omega}\\
+		&= \frac{2 \d{\omega}}{a(\omega^2_{max} - \omega^2 )^{1 /2}}.
+\end{align*}
+This can be used to rewrite the above integral in terms of $\omega$ with limits
+$0, \omega_{max}$.
+
+\subsection{Diatomic 1D Crystal}
+The Hamiltonian for a diatomic alternating crystal is
+\begin{equation*}
+	\H = \sum_{j=1}^{N}{\frac{m_1}{2}\zeta^2_{2j} + \frac{m_2}{2}\zeta^2_{2j-1}}
+	+ \frac{f}{2} \sum_{j=1}^{N}{{[ {(\zeta_{2j} - \zeta_{2j-1})}^2 +
+	{(\zeta_{2j+1} - \zeta_{2j})}^2 ]}}.
+\end{equation*}
+This system leads to one set of equations of motion for each particle type. The
+solution is
+\begin{align*}
+	\omega^2 &= \omega^2_0 {\left[ 1 \pm {\left(1 - \frac{4m_1 m_2
+	\sin^2{\phi}}{{(m_1 m_2 )}^2}\right)}^{1 / 2}\right]}\\
+	\omega^2_0 = \frac{f}{\mu}.
+\end{align*}
+One interesting part of the solution, is that two sets of frequencies exist
+depending on if $+$ or $-$ is chosen. When atoms move together, the branch is
+called the acoustic branch. When neighboring atoms and displaced in opposite
+directions, it is called the optical branch. If the atoms have differing
+charges, the optical branch can absorb and emit light. This is usually in the
+infrared spectrum.
+
+\section{Defects}%
+\label{sec:crystal_defects}
+We shall now look at the energetic and entropic effects on defects in solids.
+Defects in a solid phase are energetically costly, but as we will see, when
+entropic effects are taken into consideration, they are almost certain.
+
+\subsection{Lattice Vacancy}
+A missing atom in a lattice site is called an \textit{Schottky defect}. Assume
+that a \textit{Schottky defect} cost a crystal an energy of $\varepsilon_s$.
+Then the free energy as a function of defects becomes,
+\begin{align*}
+	A(n) &= E - TS\\
+		 &= n \varepsilon_s - kT \ln{\frac{N!}{n!(N-n)!}},
+\end{align*}
+where the argument in the logarithm is the number of unique ways to distribute n
+\textit{Schottky defect}. If we take the derivative with respect to $n$ we get,
+\begin{align*}
+	\frac{\partial A}{\partial n} &= \varepsilon_s - kT\frac{\partial}{\partial
+	n}{\left[ \ln{N!} - \ln{n!} - \ln{(N - n)!}\right]}\\
+	&\approx \varepsilon_s - kT\frac{\partial}{\partial n}{\left[ -\ln{n} + n
+	-\ln{(N-n)!} + N - n \right]}\\
+	&\approx \varepsilon_s + kT{\left(\frac{1}{n} - \frac{1}{N-n}\right)}.
+\end{align*}
+
+\subsection{Interstitial Defect}
+When an atom is not placed correctly on a lattice site it is called an
+\textit{Frenkel defect}. If $N'$ interstitial sites exist then $A(n)$ is
+\begin{equation*}
+	A(n) = n\varepsilon_i - kT \ln{\left[\frac{N!}{n!(N-n)!} \cdot
+	\frac{N'!}{n!(N' - n)!}\right]}.
+\end{equation*}
+The minimization of free energy can similarly be done in this case.
+
+\subsection{Summary}
+The dominate type of defect can be determined using a careful measure of
+density. Frenkel defects do not change density while Schottky defect since they
+move particles to the surface do. The diffusion of atoms through a lattice
+depends in large measure to the concentration of defect. If moving to a vacant
+site takes an energy $\varepsilon$ then the probability an atom has an energy to
+overcome the barrier is $e^{-\varepsilon /kT}$. An atom with a fequency of $\nu$
+then has a time probability of jumping $p \approx \nu e^{-\varepsilon /kT}$. The
+flux of atoms across one lattice constant is then $pa (\d{c}/\d{x})$ where c is
+the number of impurities. If  $n$ represents the linear concentration of
+impurities then $c = an$ and $j = -pa^2 (\partial n / \partial x)$. Comparing
+this to Fick's law,
+\begin{equation*}
+	j = -D \frac{\partial n}{\partial x},
+\end{equation*}
+we see that $D = pa^2 \approx \nu a^2 e^{-\varepsilon /kT}$.
+
+Colors in alkali halide crystals is completely a result of defects. The defects
+are appropriately known as \textit{color centers}. One type F centers occur when
+an alkali metal vapor is introduced to the alkali halide crystal. The alkali
+metal get incorporated and separated from its electron. The electron becomes
+effectively attached to its lattice site and can absorb visible light.
