@@ -71,14 +71,14 @@ frequencies term added to ensure a correct weighting of frequencies.
 	\ln{\Q} &= - \frac{-U(\vec{0}; \rho)}{kT} +
 	\int_{0}^{\infty}{{\left(\frac{-h\nu}{2kT} - \ln{1 -
 	e^{-h\nu/kT}}\right)} \cdot g(\nu) \d{\nu}}\\
-	\int_{0}^{\infty}{g(\nu)\d{\nu}} = 3N.
+	\int_{0}^{\infty}{g(\nu)\d{\nu}} &= 3N.
 \end{align*}
 Thus if $g(\nu)$ is known, all thermodynamic properties of the crystal can be
 calculated. The specific heat formula is given to compare the Einstein, Debye,
 and phonon methods of looking at crystals,
 \begin{equation*}
-	C_v = k \int_{0}^{\inft}{\frac{(h\nu /kT)^2 e^{-h\nu/kT} g(\nu) \d{\nu}{(1 -
-		e^{-h\nu/kT})^2}}.
+	C_v = k \int_{0}^{\infty}{\frac{(h\nu /kT)^2 e^{-h\nu/kT} g(\nu) \d{\nu}}{(1
+	- e^{-h\nu/kT})^2}}.
 \end{equation*}
 
 \section{Einstein Crystal}%
@@ -131,7 +131,7 @@ crystal. A wave function can be written as
  \begin{equation*}
 	 u(r, t) = A e^{i(\vec{k} \cdot \vec{r} - \omega t)},
 \end{equation*}
-with wave vector $ \vec{k}$ of magnitude \frac{$2\pi}{\lambda}$ and frequency
+with wave vector $ \vec{k}$ of magnitude $\frac{2\pi}{\lambda}$ and frequency
 $\omega = 2\pi\nu$. The wave vector defines a direction and the frequency
 defines how quickly the phase changes. By adding another wave in direction $-k$,
 we can form a standing wave,
@@ -264,7 +264,7 @@ The average energy is then,
 Using the function $g(\nu)$ as before,
 \begin{equation*}
 	\overline{E} = E_0 + \int_{0}^{\infty}{\frac{g(\nu)h\nu}{e^{\beta
-		h\nu} - 1} \d{\nu}.
+	h\nu} - 1} \d{\nu}}.
 \end{equation*}
 This equation is equivalent to the previous treatment in the beginning of this
 chapter. Thus a fully examination of the statistical mechanics of crystal can be
@@ -338,9 +338,9 @@ the energy of the system, the result is
 The bounds on the integral are from the fact that $\omega(k) = \omega(|k|)$.
 Using chain rule we can eliminate $k$,
 \begin{align*}
-	\d{k} &= \frac{\d{k}}{\d{\omega}} \d{\omega} = \frac{\d}{\d{\omega} {\left[
-				\frac{2}{a}
-		\sin^{-1}{\left(\frac{\omega}{\omega_{max}}\right)}\right]}\d{\omega}\\
+	\d{k} &= \frac{\d{k}}{\d{\omega}} \d{\omega} = \frac{\d}{\d{\omega}}{\left[
+		\frac{2}{a}\sin^{-1}{\left(\frac{\omega}{\omega_{max}}\right)}\right]}
+		\d{\omega}\\
 		&= \frac{2 \d{\omega}}{a(\omega^2_{max} - \omega^2 )^{1 /2}}.
 \end{align*}
 This can be used to rewrite the above integral in terms of $\omega$ with limits
